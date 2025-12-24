@@ -3,9 +3,11 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "03d63d4f6630a8f4070fecde4a6ea014",
-"assets/AssetManifest.bin.json": "756b0e0174a281dbef836fc729d4ffee",
+const RESOURCES = {"assets/AssetManifest.bin": "71f4fcd713904b479497b57cd5b0274e",
+"assets/AssetManifest.bin.json": "d95fe727982650ac1b6b2be9be98d48d",
 "assets/assets/cv/omar_shawky.pdf": "c9550062c839aa95e087fbbf21543649",
+"assets/assets/images/hayat_muslim.webp": "841645545619510f0af69c116db4139c",
+"assets/assets/images/ok_movies.webp": "475004cd457ac3e8cc522e2bf6aef3e4",
 "assets/assets/images/piko.webp": "677811408006c4217ee6bcdb98057648",
 "assets/assets/images/profile.webp": "7fce2e61796407414cae703b23476a1f",
 "assets/assets/images/ripple.webp": "ecb81c78f53299360912d675699502f6",
@@ -29,16 +31,16 @@ const RESOURCES = {"assets/AssetManifest.bin": "03d63d4f6630a8f4070fecde4a6ea014
 "canvaskit/skwasm_heavy.wasm": "b0be7910760d205ea4e011458df6ee01",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "flutter.js": "24bc71911b75b5f8135c949e27a2984e",
-"flutter_bootstrap.js": "7f2239658eeeb68fa95da7fa3c747017",
+"flutter_bootstrap.js": "70a4b873deb23d60c9461d52554933c7",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
 "index.html": "a1cd2b11e8d81a0811ab72d80b0998d9",
 "/": "a1cd2b11e8d81a0811ab72d80b0998d9",
-"main.dart.js": "7f21acbc78becf553d21a87b1de5514b",
+"main.dart.js": "a8456eb78917253637b37a670f09c7f4",
 "main.dart.mjs": "e85ad0cf2701438f92773df5b11e894f",
-"main.dart.wasm": "30c42e0aec4dd8e3a609cf116264cd79",
+"main.dart.wasm": "bbbca5f0d34030ab8355091cb6d8f89e",
 "manifest.json": "fdbd288cd3364dc49f1d8048557cd12e",
 "version.json": "009c9e65172e010890f7f65fde438006"};
 // The application shell files that are downloaded before a service worker can
