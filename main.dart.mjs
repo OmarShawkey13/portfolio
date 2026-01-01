@@ -423,6 +423,7 @@ class CompiledApp {
       _1283: x0 => x0.frameCount,
       _1348: (x0,x1,x2,x3) => x0.open(x1,x2,x3),
       _1356: (x0,x1) => x0.getItem(x1),
+      _1358: (x0,x1,x2) => x0.setItem(x1,x2),
       _1359: Date.now,
       _1361: s => new Date(s * 1000).getTimezoneOffset() * 60,
       _1362: s => {
@@ -443,6 +444,18 @@ class CompiledApp {
       _1364: () => typeof dartUseDateNowForTicks !== "undefined",
       _1365: () => 1000 * performance.now(),
       _1366: () => Date.now(),
+      _1367: () => {
+        // On browsers return `globalThis.location.href`
+        if (globalThis.location != null) {
+          return globalThis.location.href;
+        }
+        return null;
+      },
+      _1368: () => {
+        return typeof process != "undefined" &&
+               Object.prototype.toString.call(process) == "[object process]" &&
+               process.platform == "win32"
+      },
       _1369: () => new WeakMap(),
       _1370: (map, o) => map.get(o),
       _1371: (map, o, v) => map.set(o, v),
@@ -463,10 +476,12 @@ class CompiledApp {
       _1396: (string, token) => string.split(token),
       _1397: Object.is,
       _1398: o => o instanceof Array,
+      _1399: (a, i) => a.push(i),
       _1403: a => a.pop(),
       _1404: (a, i) => a.splice(i, 1),
       _1405: (a, s) => a.join(s),
       _1406: (a, s, e) => a.slice(s, e),
+      _1408: (a, b) => a == b ? 0 : (a > b ? 1 : -1),
       _1409: a => a.length,
       _1411: (a, i) => a[i],
       _1412: (a, i, v) => a[i] = v,
@@ -530,8 +545,12 @@ class CompiledApp {
       _1478: (ms, c) =>
       setTimeout(() => dartInstance.exports.$invokeCallback(c),ms),
       _1479: (handle) => clearTimeout(handle),
+      _1480: (ms, c) =>
+      setInterval(() => dartInstance.exports.$invokeCallback(c), ms),
+      _1481: (handle) => clearInterval(handle),
       _1482: (c) =>
       queueMicrotask(() => dartInstance.exports.$invokeCallback(c)),
+      _1483: () => Date.now(),
       _1484: (s, m) => {
         try {
           return new RegExp(s, m);
