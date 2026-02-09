@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <base href="/portfolio/"/>
+    <base href="/"/>
     <meta charset="utf-8"/>
     <style>
       @import url(https://fonts.googleapis.com/css?family=Poppins);
@@ -302,7 +302,9 @@
         text-decoration: none;
       }
       .project-card:hover {
-        box-shadow: 0px 24px 50px -12px rgba(0,0,0,0.35);
+        box-shadow: 0px 40px 80px -16px rgba(0,0,0,0.45);
+        transform: translateY(-10px) scale(1.01);
+        filter: brightness(1.05);
       }
       .project-image {
         position: absolute;
@@ -310,8 +312,12 @@
         left: 0px;
         bottom: 0px;
         right: 0px;
+        transition: transform 300ms ease 300ms;
         background-position: center;
         background-size: cover;
+      }
+      .project-card:hover .project-image {
+        transform: scale(1.08);
       }
       .project-overlay {
         position: absolute;
@@ -319,28 +325,26 @@
         left: 0px;
         bottom: 0px;
         right: 0px;
-        transition: background-color 300ms ease-out 300ms;
-        background-color: rgba(0,0,0,0.20);
+        transition: opacity 350ms ease 350ms;
+        background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
       }
       .project-card:hover .project-overlay {
-        background-color: rgba(0,0,0,0.40);
+        opacity: 1.0;
       }
       .project-glass {
         position: absolute;
-        left: 0px;
-        bottom: 0px;
-        right: 0px;
-        padding: 28px;
+        left: 16px;
+        bottom: 16px;
+        right: 16px;
+        padding: 22px;
         border: solid rgba(255,255,255,0.25) 1px;
-        border-top-left-radius: 24px;
-        border-top-right-radius: 24px;
-        backdrop-filter: blur(16px);
-        transition: transform 350ms ease-out, backdrop-filter 350ms ease-out 350ms;
-        transform: translateY(48px);
-        background: linear-gradient(135deg, rgba(255,255,255,0.28), rgba(255,255,255,0.08));
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        transition: transform 400ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease 400ms;
+        transform: translateY(24px);
+        background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.05));
       }
       .project-card:hover .project-glass {
-        backdrop-filter: blur(24px);
         transform: translateY(0px);
       }
       .project-glass h3 {
@@ -360,38 +364,50 @@
       }
       .project-link {
         display: inline-block;
-        margin-top: 20px;
+        padding: 8px 16px;
+        margin-top: 16px;
+        border: solid rgba(255,255,255,0.35) 1px;
+        border-radius: 999px;
         opacity: 0.0;
-        transition: opacity 200ms ease-out 200ms;
+        transition: opacity 200ms ease, transform 200ms ease, background-color 200ms ease 200ms;
         font-weight: 600;
+        background-color: rgba(255,255,255,0.15);
       }
       .project-card:hover .project-link {
         opacity: 1.0;
+        transform: translateY(-2px);
       }
       @media screen and (max-width: 600px) {
         .project-card {
           aspect-ratio: 4/5;
+          border-radius: 20px;
+          box-shadow: 0px 12px 24px -8px rgba(0,0,0,0.25);
+        }
+        .project-image {
+          transform: scale(1.02);
         }
         .project-glass {
-          padding: 16px;
-          backdrop-filter: blur(16px);
+          padding: 12px 14px;
+          border-radius: 16px;
+          backdrop-filter: blur(10px);
           transform: none;
-        }
-        .project-card:hover .project-glass {
-          transform: none;
+          left: 12;
+          right: 12;
+          bottom: 12;
         }
         .project-overlay {
-          background-color: rgba(0,0,0,0.35);
+          background: linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.45) 100%);
         }
         .project-glass h3 {
-          font-size: 1.05rem;
+          font-size: 1rem;
         }
         .project-glass p {
-          font-size: 0.95rem;
-          -webkit-line-clamp: 3;
+          font-size: 0.9rem;
+          -webkit-line-clamp: 2;
         }
         .project-link {
-          margin-top: 14px;
+          padding: 6px 12px;
+          margin-top: 10px;
           opacity: 1.0;
         }
       }
@@ -432,6 +448,7 @@
       .about-section {
         width: 100%;
         padding: 80px 48px;
+        background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.02));
       }
       .about-container {
         display: flex;
@@ -441,34 +458,38 @@
         flex-direction: column;
       }
       .about-title {
-        margin-bottom: 48px;
-        font-size: 3rem;
-        font-weight: bold;
+        margin-bottom: 16px;
+        font-size: 3.2rem;
+        font-weight: 800;
+        letter-spacing: -0.5px;
       }
       .about-text {
         max-width: 900px;
-        color: rgb(from #6B7280 r g b / 0.8);
-        font-size: 20px;
-        line-height: 1.6em;
+        color: rgb(from #6B7280 r g b / 0.85);
+        font-size: 18px;
+        line-height: 1.8em;
         white-space: pre-line;
+        text-wrap: pretty;
+        hyphens: auto;
       }
       @media screen and (max-width: 600px) {
         .about-section {
-          padding: 48px 16px;
+          padding: 64px 16px;
         }
         .about-container {
           align-items: center;
+          column-gap: 16px;
         }
         .about-title {
-          margin-bottom: 24px;
+          margin-bottom: 8px;
           text-align: center;
-          font-size: 1.9rem;
+          font-size: 2rem;
         }
         .about-text {
           max-width: 100%;
           text-align: center;
-          font-size: 14px;
-          line-height: 1.6em;
+          font-size: 14.5px;
+          line-height: 1.7em;
         }
       }
       .footer {
@@ -1404,6 +1425,12 @@
       }
       .content :where(> :last-child):not(:where([class~=not-content],[class~=not-content] *)) {
         margin-bottom: 0;
+      }
+      * {
+        transition: background-color 500ms ease, color 500ms ease, border-color 500ms ease 500ms;
+      }
+      html, body {
+        scroll-behavior: smooth;
       }
       .app-root {
         width: 100%;

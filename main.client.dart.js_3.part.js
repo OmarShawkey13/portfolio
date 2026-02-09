@@ -1,73 +1,102 @@
 ((a,b)=>{a[b]=a[b]||{}})(self,"$__dart_deferred_initializers__")
-$__dart_deferred_initializers__.current=function(a,b,c,$){var B,C,A={
-hS(d,e){return new A.ec(e,d,null)},
-ha(d){return new A.ef(d,null)},
-fZ(d,e){return new A.e9(e,d,null)},
+$__dart_deferred_initializers__.current=function(a,b,c,$){var C,D,E,B={
+jd(d,e){return new B.cM(e,d,null)},
 eg:function eg(d,e,f){this.d=d
 this.w=e
 this.a=f},
-ec:function ec(d,e,f){this.d=d
+cM:function cM(d,e,f){this.d=d
 this.w=e
 this.a=f},
-em:function em(d,e,f){this.d=d
+el:function el(d,e,f){this.d=d
 this.w=e
 this.a=f},
-ef:function ef(d,e){this.x=d
+b8:function b8(d,e){this.x=d
 this.a=e},
-e9:function e9(d,e,f){this.d=d
+b4:function b4(d,e,f){this.d=d
 this.at=e
 this.a=f},
-kk(){return new A.aq(null)},
+ki(){return new B.aq(null)},
 aq:function aq(d){this.a=d},
-dZ:function dZ(){this.d=!1
+e1:function e1(){this.d=!1
 this.c=null},
-ft:function ft(d){this.a=d},
-fs:function fs(d){this.a=d}}
-B=c[0]
-C=c[5]
-A=a.updateHolder(c[4],A)
-A.eg.prototype={
+fs:function fs(d){this.a=d},
+fr:function fr(d){this.a=d}},A
+C=c[0]
+D=c[5]
+E=c[6]
+B=a.updateHolder(c[4],B)
+A=c[8]
+B.eg.prototype={
 C(d){var x=null
-return new B.L("nav",x,this.d,x,x,x,this.w,x)}}
-A.ec.prototype={
+return new C.L("nav",x,this.d,x,x,x,this.w,x)}}
+B.cM.prototype={
 C(d){var x=null
-return new B.L("div",x,this.d,x,x,x,this.w,x)}}
-A.em.prototype={
+return new C.L("div",x,this.d,x,x,x,this.w,x)}}
+B.el.prototype={
 C(d){var x=null
-return new B.L("ul",x,this.d,x,x,x,this.w,x)}}
-A.ef.prototype={
+return new C.L("ul",x,this.d,x,x,x,this.w,x)}}
+B.b8.prototype={
 C(d){var x=null,w=y.g
-return new B.L("li",x,x,x,B.M(w,w),x,this.x,x)}}
-A.e9.prototype={
-C(d){var x=null,w=y.g,v=B.M(w,w)
+return new C.L("li",x,x,x,C.M(w,w),x,this.x,x)}}
+B.b4.prototype={
+C(d){var x=null,w=y.g,v=C.M(w,w)
 v.l(0,"href",this.d)
-w=B.M(w,y.a)
-w.E(0,C.jh().$1$1$onClick(x,y.f))
-return new B.L("a",x,x,x,v,w,this.at,x)}}
-A.aq.prototype={
-bB(){return new A.dZ()}}
-A.dZ.prototype={
-C(d){var x,w=null,v=y.p,u=A.hS(B.c([C.bw(B.c([new B.ac("O",w)],v),"logo-box",w),C.bw(B.c([new B.ac("Omar Shawkey",w)],v),"logo-text",w)],v),"logo"),t=B.bV(["click",new A.ft(this)],y.g,y.a)
-t=C.jf(B.c([C.bw(B.c([],v),"bar",w),C.bw(B.c([],v),"bar",w),C.bw(B.c([],v),"bar",w)],v),w,"nav-toggle",t,w,w)
-x=this.d?"open":""
-return A.hS(B.c([new A.eg("navbar",B.c([A.hS(B.c([u,t,new A.em("nav-items "+x,B.c([A.ha(B.c([A.fZ(B.c([new B.ac("Home",w)],v),"#home")],v)),A.ha(B.c([A.fZ(B.c([new B.ac("Projects",w)],v),"#projects")],v)),A.ha(B.c([A.fZ(B.c([new B.ac("Skills",w)],v),"#skills")],v)),A.ha(B.c([A.fZ(B.c([new B.ac("About",w)],v),"#about")],v))],v),w)],v),"navbar-container")],v),w)],v),"navbar-wrapper")}}
+w=C.M(w,y.a)
+w.E(0,D.je().$1$1$onClick(x,y.f))
+return new C.L("a",x,x,x,v,w,this.at,x)}}
+B.aq.prototype={
+bB(){return new B.e1()}}
+B.e1.prototype={
+C(d){var x=null,w=D.jb(A.V,x,"nav-toggle",C.bX(["click",new B.fs(this)],y.g,y.a),x,x),v=this.d?"open":"",u=y.p
+return B.jd(C.e([new B.eg("navbar",C.e([B.jd(C.e([A.av,w,new B.el("nav-items "+v,A.K,x)],u),"navbar-container")],u),x)],u),"navbar-wrapper")}}
 var z=a.updateTypes([])
-A.ft.prototype={
+B.fs.prototype={
 $1(d){var x
-B.o(d)
+C.o(d)
 x=this.a
-return x.ba(new A.fs(x))},
+return x.ba(new B.fr(x))},
 $S:3}
-A.fs.prototype={
+B.fr.prototype={
 $0(){var x=this.a
 return x.d=!x.d},
 $S:0};(function inheritance(){var x=a.inheritMany,w=a.inherit
-x(C.H,[A.eg,A.ec,A.em,A.ef,A.e9])
-w(A.aq,C.aj)
-w(A.dZ,C.a5)
-w(A.ft,B.ai)
-w(A.fs,B.ba)})()
-B.fy(b.typeUniverse,JSON.parse('{"eg":{"H":[],"j":[]},"ec":{"H":[],"j":[]},"em":{"H":[],"j":[]},"ef":{"H":[],"j":[]},"e9":{"H":[],"j":[]},"aq":{"aj":[],"j":[]},"dZ":{"a5":["aq"],"a5.T":"aq"}}'))
-var y={p:B.C("q<j>"),g:B.C("b"),f:B.C("~"),a:B.C("~(m)")}};
-(a=>{a["fKW1PjAFAjefoM1SXOayGm5os+U="]=a.current})($__dart_deferred_initializers__);
+x(D.H,[B.eg,B.cM,B.el,B.b8,B.b4])
+w(B.aq,D.aj)
+w(B.e1,D.a5)
+w(B.fs,C.ai)
+w(B.fr,C.bd)})()
+C.fx(b.typeUniverse,JSON.parse('{"eg":{"H":[],"j":[]},"cM":{"H":[],"j":[]},"el":{"H":[],"j":[]},"b8":{"H":[],"j":[]},"b4":{"H":[],"j":[]},"aq":{"aj":[],"j":[]},"e1":{"a5":["aq"],"a5.T":"aq"}}'))
+var y={p:C.B("q<j>"),g:C.B("b"),f:C.B("~"),a:C.B("~(m)")};(function constants(){var x=a.makeConstList
+A.a3=new C.ac("Home",null)
+A.N=x([A.a3],y.p)
+A.as=new B.b4("#home",A.N,null)
+A.L=x([A.as],y.p)
+A.aw=new B.b8(A.L,null)
+A.a5=new C.ac("Projects",null)
+A.P=x([A.a5],y.p)
+A.ar=new B.b4("#projects",A.P,null)
+A.R=x([A.ar],y.p)
+A.ay=new B.b8(A.R,null)
+A.a6=new C.ac("Skills",null)
+A.Q=x([A.a6],y.p)
+A.at=new B.b4("#skills",A.Q,null)
+A.U=x([A.at],y.p)
+A.az=new B.b8(A.U,null)
+A.a2=new C.ac("About",null)
+A.M=x([A.a2],y.p)
+A.au=new B.b4("#about",A.M,null)
+A.T=x([A.au],y.p)
+A.ax=new B.b8(A.T,null)
+A.K=x([A.aw,A.ay,A.az,A.ax],y.p)
+A.k=new D.b9("bar",null,E.t,null)
+A.V=x([A.k,A.k,A.k],y.p)
+A.a4=new C.ac("O",null)
+A.O=x([A.a4],y.p)
+A.aB=new D.b9("logo-box",null,A.O,null)
+A.a7=new C.ac("Omar Shawkey",null)
+A.W=x([A.a7],y.p)
+A.aA=new D.b9("logo-text",null,A.W,null)
+A.S=x([A.aB,A.aA],y.p)
+A.av=new B.cM("logo",A.S,null)})()};
+(a=>{a["yo29OeGYPgRzF/RN/OB5UY3/lLU="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_3.part.js.map
