@@ -295,16 +295,18 @@
         aspect-ratio: 6/5;
         border-radius: 24px;
         overflow: hidden;
-        box-shadow: 0px 24px 50px -12px rgba(0,0,0,0.20);
+        box-shadow: 0px 20px 40px -12px rgba(0,0,0,0.20);
         cursor: pointer;
-        transition: box-shadow 350ms ease-out 350ms;
+        transition: box-shadow 300ms ease, transform 300ms ease 300ms;
         color: white;
         text-decoration: none;
+        will-change: transform, box-shadow;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
       }
       .project-card:hover {
-        box-shadow: 0px 40px 80px -16px rgba(0,0,0,0.45);
-        transform: translateY(-10px) scale(1.01);
-        filter: brightness(1.05);
+        box-shadow: 0px 32px 70px -16px rgba(0,0,0,0.35);
+        transform: translateY(-6px);
       }
       .project-image {
         position: absolute;
@@ -312,9 +314,10 @@
         left: 0px;
         bottom: 0px;
         right: 0px;
-        transition: transform 300ms ease 300ms;
+        transition: transform 400ms ease 400ms;
         background-position: center;
         background-size: cover;
+        will-change: transform;
       }
       .project-card:hover .project-image {
         transform: scale(1.08);
@@ -325,8 +328,9 @@
         left: 0px;
         bottom: 0px;
         right: 0px;
-        transition: opacity 350ms ease 350ms;
-        background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.55) 100%);
+        opacity: 0.85;
+        transition: opacity 300ms ease 300ms;
+        background: linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.60) 100%);
       }
       .project-card:hover .project-overlay {
         opacity: 1.0;
@@ -336,36 +340,37 @@
         left: 16px;
         bottom: 16px;
         right: 16px;
-        padding: 22px;
+        padding: 20px;
         border: solid rgba(255,255,255,0.25) 1px;
-        border-radius: 20px;
-        backdrop-filter: blur(20px);
-        transition: transform 400ms cubic-bezier(.2,.8,.2,1), opacity 300ms ease 400ms;
-        transform: translateY(24px);
-        background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.05));
+        border-radius: 18px;
+        backdrop-filter: blur(16px);
+        transition: transform 350ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease 350ms;
+        transform: translateY(20px);
+        background: linear-gradient(135deg, rgba(255,255,255,0.20), rgba(255,255,255,0.06));
+        will-change: transform;
       }
       .project-card:hover .project-glass {
         transform: translateY(0px);
       }
       .project-glass h3 {
         margin: 0;
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         font-weight: 600;
       }
       .project-glass p {
-        margin-top: 12px;
+        margin-top: 10px;
         overflow: hidden;
         color: rgba(255,255,255,0.85);
         font-size: 0.95rem;
-        line-height: 1.6em;
+        line-height: 1.5em;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
       }
       .project-link {
         display: inline-block;
-        padding: 8px 16px;
-        margin-top: 16px;
+        padding: 6px 14px;
+        margin-top: 12px;
         border: solid rgba(255,255,255,0.35) 1px;
         border-radius: 999px;
         opacity: 0.0;
@@ -380,34 +385,16 @@
       @media screen and (max-width: 600px) {
         .project-card {
           aspect-ratio: 4/5;
-          border-radius: 20px;
-          box-shadow: 0px 12px 24px -8px rgba(0,0,0,0.25);
-        }
-        .project-image {
-          transform: scale(1.02);
+          border-radius: 18px;
+          box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.25);
         }
         .project-glass {
-          padding: 12px 14px;
-          border-radius: 16px;
-          backdrop-filter: blur(10px);
+          padding: 10px 12px;
+          border-radius: 14px;
+          backdrop-filter: blur(8px);
           transform: none;
-          left: 12;
-          right: 12;
-          bottom: 12;
-        }
-        .project-overlay {
-          background: linear-gradient(180deg, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.45) 100%);
-        }
-        .project-glass h3 {
-          font-size: 1rem;
-        }
-        .project-glass p {
-          font-size: 0.9rem;
-          -webkit-line-clamp: 2;
         }
         .project-link {
-          padding: 6px 12px;
-          margin-top: 10px;
           opacity: 1.0;
         }
       }
