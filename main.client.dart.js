@@ -4264,8 +4264,11 @@ if(o.gV()==null)return
 s=o.ga3()
 for(r=o.d,q=null;s!=null;q=s,s=p){p=s!==o.gV()?A.z(s.previousSibling):null
 A.o(r.insertBefore(s,q))}o.e=!1},
-v(a,b){if(!this.e)this.aB(b)
-else this.a.v(0,b)},
+v(a,b){var s=this
+if(b===s.f)s.f=b.c
+if(b===s.r)s.r=b.b
+if(!s.e)s.aB(b)
+else s.a.v(0,b)},
 a1(){this.e=!0},
 $ihu:1,
 gB(){return this.d}}
@@ -4311,10 +4314,14 @@ a.scU(p)
 n=p
 if(n!=null)n.b=a}finally{a.a1()}},
 cr(a,b){return this.av(a,b,null)},
-aB(a){if(a instanceof A.a1&&a.e){a.d0(this)
-a.a=null
-return}A.o(this.gB().removeChild(a.gB()))
-a.a=null}}
+aB(a){var s,r
+if(a instanceof A.a1&&a.e)a.d0(this)
+else A.o(this.gB().removeChild(a.gB()))
+s=a.b
+r=a.c
+if(s!=null)s.c=r
+if(r!=null)r.b=s
+a.a=a.c=a.b=null}}
 A.a3.prototype={
 b7(a){var s,r,q,p
 t.G.a(a)
