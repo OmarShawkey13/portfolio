@@ -69,31 +69,9 @@
       .theme-fab:hover {
         transform: translateY(-2px);
       }
-      .footer-link {
-        display: flex;
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: transform 200ms ease, background-color 200ms ease 200ms;
-        justify-content: center;
-        align-items: center;
-      }
-      .footer-link img {
-        transition: filter 200ms ease 200ms;
-        filter: invert(45%) sepia(12%) saturate(400%) hue-rotate(190deg) brightness(0.9);
-      }
-      .footer-link:hover {
-        transform: scale(1.2);
-        background-color: rgb(from #3C78FF r g b / 0.08);
-      }
-      .footer-link:hover img {
-        filter: invert(38%) sepia(95%) saturate(600%) hue-rotate(205deg) brightness(1);
-      }
       .navbar-wrapper {
         display: flex;
         width: 100%;
-        box-shadow: 0px 8px 20px rgb(from black r g b / 0.08);
         flex-direction: column;
         align-items: center;
       }
@@ -103,6 +81,7 @@
         width: 100%;
         padding-left: 32px;
         padding-right: 32px;
+        box-shadow: 0px 4px 20px rgb(from black r g b / 0.04);
         backdrop-filter: blur(20px);
         background-color: var(--navbar-bg);
         top: 0;
@@ -112,8 +91,8 @@
         display: flex;
         width: 100%;
         max-width: 1200px;
-        padding-top: 14px;
-        padding-bottom: 14px;
+        padding-top: 16px;
+        padding-bottom: 16px;
         justify-content: space-between;
         align-items: center;
       }
@@ -124,10 +103,10 @@
       }
       .logo-box {
         display: flex;
-        width: 36px;
-        height: 36px;
+        width: 38px;
+        height: 38px;
         border-radius: 10px;
-        box-shadow: 0px 2px 8px rgb(from #3C78FF r g b / 0.35);
+        box-shadow: 0px 3px 10px rgb(from #3C78FF r g b / 0.3);
         justify-content: center;
         align-items: center;
         color: #ffffff;
@@ -137,6 +116,7 @@
         background-color: #3C78FF;
       }
       .logo-text {
+        color: var(--text-primary);
         font-size: 20px;
         font-weight: 600;
         letter-spacing: 0.3px;
@@ -145,12 +125,13 @@
         display: flex;
         padding: 0;
         margin: 0;
+        align-items: center;
         column-gap: 32px;
         list-style-type: none;
       }
       .nav-items a {
         position: relative;
-        transition: color 200ms ease 200ms;
+        transition: color 200ms;
         color: var(--text-secondary);
         font-size: 15px;
         font-weight: 500;
@@ -174,38 +155,67 @@
       }
       .nav-toggle {
         display: none;
+        padding: 4px;
         border: unset;
         cursor: pointer;
         flex-direction: column;
-        row-gap: 4px;
+        row-gap: 5px;
         background-color: transparent;
       }
       .nav-toggle .bar {
-        width: 22px;
+        width: 24px;
         height: 2px;
+        transition: all 250ms;
         background-color: var(--text-secondary);
       }
-      @media screen and (max-width: 600px) {
+      .nav-toggle.active .bar-1 {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .nav-toggle.active .bar-2 {
+        opacity: 0.0;
+      }
+      .nav-toggle.active .bar-3 {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+      @media screen and (max-width: 768px) {
         .nav-toggle {
           display: flex;
         }
         .nav-items {
-          display: none;
+          display: flex;
           position: absolute;
-          padding: 20px;
+          padding: 24px 0px;
+          opacity: 0.0;
           flex-direction: column;
-          row-gap: 16px;
+          align-items: stretch;
+          row-gap: 20px;
           background-color: var(--navbar-bg);
-          top: 64px;
+          top: 70px;
           left: 0;
           right: 0;
+          max-height: 0px;
+          overflow: hidden;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+          transform: translateY(-10px);
+          transition: all 350ms cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav-items.open {
-          display: flex;
+          opacity: 1.0;
+          max-height: 300px;
+          transform: translateY(0);
+        }
+        .nav-items li {
+          width: 100%;
+          text-align: center;
         }
         .nav-items a {
-          text-align: center;
+          display: block;
+          padding-top: 8px;
+          padding-bottom: 8px;
           font-size: 16px;
+        }
+        .nav-items a::after {
+          display: none;
         }
       }
       .theme-toggle {
@@ -866,34 +876,40 @@
       }
       .btn {
         display: inline-flex;
-        padding: 12px 20px;
+        padding: 14px 24px;
         border-radius: 12px;
         cursor: pointer;
-        transition: transform 200ms ease-out, box-shadow 200ms ease-out 1000ms;
+        transition: all 180ms;
+        justify-content: center;
         align-items: center;
-        column-gap: 8px;
+        row-gap: 10px;
         font-weight: 600;
         text-decoration: none;
       }
+      .btn:hover {
+        transform: translateY(-3px);
+      }
       .btn-primary {
-        box-shadow: 0px 10px 24px rgb(from #3C78FF r g b / 0.35);
-        color: #ffffff;
+        box-shadow: 0px 6px 16px rgb(from #3C78FF r g b / 0.25);
+        color: white;
         background-color: #3C78FF;
       }
       .btn-primary:hover {
-        transform: translateY(-2px);
+        box-shadow: 0px 12px 24px rgb(from #3C78FF r g b / 0.4);
       }
       .btn-outline {
-        border: solid rgb(from #3C78FF r g b / 0.4);
+        border: solid rgb(from #3C78FF r g b / 0.3) 1.5px;
         color: #3C78FF;
         background-color: transparent;
       }
       .btn-outline:hover {
-        background-color: rgb(from #3C78FF r g b / 0.08);
+        border: solid #3C78FF 1.5px;
+        background-color: rgb(from #3C78FF r g b / 0.06);
       }
       .btn-icon {
-        width: 18px;
-        height: 18px;
+        width: 20px;
+        height: 20px;
+        transition: all 180ms;
         background-position: center;
         background-repeat: no-repeat;
         background-size: contain;
@@ -902,15 +918,17 @@
         background-image: url(assets/images/download.webp);
         filter: invert(1);
       }
-      .btn-icon.link {
-        background-image: url(https://fonts.gstatic.com/s/i/materialicons/link/v17/24px.svg);
-        filter: invert(32%) sepia(95%) saturate(1800%) hue-rotate(200deg);
+      .btn-icon.github {
+        background-image: url(https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg);
+      }
+      .btn:hover .btn-icon.download {
+        transform: translateY(1px);
       }
       @media screen and (max-width: 600px) {
         .hero-actions {
           flex-direction: column;
           align-items: stretch;
-          row-gap: 10px;
+          column-gap: 12px;
         }
         .btn {
           width: 100%;
@@ -920,7 +938,7 @@
         display: inline-flex;
         padding: 12px 20px;
         border-radius: 20px;
-        box-shadow: 0px 0px 20px rgb(from black r g b / 0.1);
+        box-shadow: 0px 4px 20px rgb(from black r g b / 0.08);
         align-items: center;
         column-gap: 8px;
         background-color: var(--card-bg);
@@ -940,9 +958,9 @@
         font-weight: 700;
         white-space: nowrap;
       }
-      @media screen and (max-width: 600px) {
+      @media screen and (max-width: 480px) {
         .hero-badge {
-          padding: 6px 12px;
+          padding: 8px 14px;
         }
         .hero-badge-text {
           font-size: 12px;
@@ -954,12 +972,18 @@
         font-size: 20px;
         line-height: 1.6em;
       }
+      .desktop-only {
+        display: block;
+      }
       @media screen and (max-width: 600px) {
         .hero-description {
           max-width: 100%;
           text-align: center;
-          font-size: 14px;
+          font-size: 15px;
           line-height: 1.6em;
+        }
+        .desktop-only {
+          display: none;
         }
       }
       .hero-image-wrapper {
@@ -1107,17 +1131,18 @@
         aspect-ratio: 6/5;
         border-radius: 24px;
         overflow: hidden;
-        box-shadow: 0px 20px 40px -12px rgba(0,0,0,0.20);
+        box-shadow: 0px 16px 40px -12px rgba(0,0,0,0.16);
         cursor: pointer;
-        transition: box-shadow 300ms ease, transform 300ms ease 300ms;
+        transition: all 350ms;
         color: white;
         text-decoration: none;
         will-change: transform, box-shadow;
         backface-visibility: hidden;
-        transform-style: preserve-3d;
+        -webkit-font-smoothing: antialiased;
+        transform: translateZ(0);
       }
       .project-card:hover {
-        box-shadow: 0px 32px 70px -16px rgba(0,0,0,0.35);
+        box-shadow: 0px 28px 50px -14px rgba(0,0,0,0.28);
         transform: translateY(-6px);
       }
       .project-image {
@@ -1126,13 +1151,13 @@
         left: 0px;
         bottom: 0px;
         right: 0px;
-        transition: transform 400ms ease 400ms;
+        transition: transform 450ms ease-out;
         background-position: center;
         background-size: cover;
         will-change: transform;
       }
       .project-card:hover .project-image {
-        transform: scale(1.08);
+        transform: scale(1.06);
       }
       .project-overlay {
         position: absolute;
@@ -1140,12 +1165,12 @@
         left: 0px;
         bottom: 0px;
         right: 0px;
-        opacity: 0.85;
-        transition: opacity 300ms ease 300ms;
-        background: linear-gradient(180deg, rgba(0,0,0,0.20) 0%, rgba(0,0,0,0.60) 100%);
+        opacity: 0.75;
+        transition: opacity 300ms;
+        background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.65) 100%);
       }
       .project-card:hover .project-overlay {
-        opacity: 1.0;
+        opacity: 0.9;
       }
       .project-glass {
         position: absolute;
@@ -1153,27 +1178,29 @@
         bottom: 16px;
         right: 16px;
         padding: 20px;
-        border: solid rgba(255,255,255,0.25) 1px;
+        border: solid rgba(255,255,255,0.2) 1px;
         border-radius: 18px;
-        backdrop-filter: blur(16px);
-        transition: transform 350ms cubic-bezier(.2,.8,.2,1), opacity 200ms ease 350ms;
-        transform: translateY(20px);
-        background: linear-gradient(135deg, rgba(255,255,255,0.20), rgba(255,255,255,0.06));
+        backdrop-filter: blur(12px);
+        transition: all 350ms;
+        transform: translateY(12px);
+        background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
         will-change: transform;
       }
       .project-card:hover .project-glass {
         transform: translateY(0px);
+        background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.07));
       }
       .project-glass h3 {
         margin: 0;
-        font-size: 1.15rem;
+        font-size: 1.2rem;
         font-weight: 600;
+        letter-spacing: 0.2px;
       }
       .project-glass p {
-        margin-top: 10px;
+        margin-top: 8px;
         overflow: hidden;
-        color: rgba(255,255,255,0.85);
-        font-size: 0.95rem;
+        color: rgba(255,255,255,0.8);
+        font-size: 0.9rem;
         line-height: 1.5em;
         display: -webkit-box;
         -webkit-line-clamp: 2;
@@ -1182,32 +1209,42 @@
       .project-link {
         display: inline-block;
         padding: 6px 14px;
-        margin-top: 12px;
-        border: solid rgba(255,255,255,0.35) 1px;
+        margin-top: 14px;
+        border: solid rgba(255,255,255,0.25) 1px;
         border-radius: 999px;
         opacity: 0.0;
-        transition: opacity 200ms ease, transform 200ms ease, background-color 200ms ease 200ms;
-        font-weight: 600;
-        background-color: rgba(255,255,255,0.15);
+        transition: all 250ms;
+        transform: translateY(4px);
+        font-size: 0.85rem;
+        font-weight: 500;
+        background-color: rgba(255,255,255,0.1);
       }
       .project-card:hover .project-link {
         opacity: 1.0;
-        transform: translateY(-2px);
+        transform: translateY(0px);
+        background-color: rgba(255,255,255,0.2);
       }
       @media screen and (max-width: 600px) {
         .project-card {
           aspect-ratio: 4/5;
           border-radius: 18px;
-          box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.25);
+          box-shadow: 0px 10px 20px -6px rgba(0,0,0,0.2);
+        }
+        .project-card:hover {
+          transform: none;
         }
         .project-glass {
-          padding: 10px 12px;
+          padding: 14px;
           border-radius: 14px;
           backdrop-filter: blur(8px);
           transform: none;
+          left: 12px;
+          right: 12px;
+          bottom: 12px;
         }
         .project-link {
           opacity: 1.0;
+          transform: none;
         }
       }
       .about-section {
@@ -1261,21 +1298,59 @@
         display: flex;
         width: 100%;
         height: auto;
-        padding-top: 48px;
-        padding-bottom: 48px;
+        padding: 40px 24px;
+        border-top-style: solid;
+        border-top-color: rgb(from #6B7280 r g b / 0.08);
+        border-top-width: 1px;
         flex-direction: column;
         align-items: center;
-        row-gap: 16px;
+        row-gap: 20px;
         background-color: var(--footer-bg);
       }
       .footer-text {
         margin: 0;
         color: rgb(from #6B7280 r g b / 0.6);
         font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.2px;
       }
       .footer-links {
         display: flex;
-        column-gap: 12px;
+        align-items: center;
+        column-gap: 16px;
+      }
+      .footer-link {
+        display: flex;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 220ms ease-in-out;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer-link img {
+        width: 22px;
+        height: 22px;
+        transition: filter 220ms;
+        filter: invert(45%) sepia(12%) saturate(400%) hue-rotate(190deg) brightness(0.9);
+      }
+      .footer-link:hover {
+        transform: scale(1.15);
+        background-color: rgb(from #3C78FF r g b / 0.1);
+      }
+      .footer-link:hover img {
+        filter: invert(38%) sepia(95%) saturate(600%) hue-rotate(205deg) brightness(1);
+      }
+      @media screen and (max-width: 500px) {
+        .footer {
+          padding: 32px 16px;
+          flex-direction: column-reverse;
+          row-gap: 24px;
+        }
+        .footer-links {
+          column-gap: 20px;
+        }
       }
       .hero-section {
         display: flex;
@@ -1443,7 +1518,7 @@
         <nav class="navbar">
           <div class="navbar-container">
             <div class="logo"><span class="logo-box">O</span><span class="logo-text">Omar Shawkey</span></div>
-            <button class="nav-toggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+            <button class="nav-toggle "><span class="bar bar-1"></span><span class="bar bar-2"></span><span class="bar bar-3"></span></button>
             <ul class="nav-items ">
               <li><a href="#home">Home</a></li>
               <li><a href="#projects">Projects</a></li>
@@ -1463,11 +1538,11 @@
                 <span>Building digital</span><br/><span class="hero-highlight">products, brands,</span><br/><span>and experiences.</span>
               </h1>
               <p class="hero-description">
-                I am a Flutter Developer specialized in building mobile and web apps<br/>with Clean Architecture and scalable code.
+                I am a Flutter Developer specialized in building mobile and web apps <br class="desktop-only"/>with Clean Architecture and scalable code.
               </p>
               <div class="hero-actions">
                 <a class="btn btn-primary" href="assets/cv/omar_shawkey.pdf" target="_blank"><span class="btn-icon download"></span><span>Download CV</span></a>
-                <a class="btn btn-outline" href="https://github.com/OmarShawkey13" target="_blank"><span class="btn-icon link"></span><span>GitHub Profile</span></a>
+                <a class="btn btn-outline" href="https://github.com/OmarShawkey13" target="_blank"><span class="btn-icon github"></span><span>GitHub Profile</span></a>
               </div>
               <div class="spaceY"></div>
               <div class="hero-stats">
@@ -1496,8 +1571,21 @@
                 <div class="project-image" style="background-image: url(assets/images/piko.webp)"></div>
                 <div class="project-overlay"></div>
                 <div class="project-glass">
-                  <h3>Piko – Real-Time Chat App</h3>
-                  <p>Real-time chat application built with Flutter, Firebase, Bloc, and Clean Architecture.</p>
+                  <h3>Piko — Real-Time Chat App</h3>
+                  <p>
+                    Real-time chat application built with Flutter, Firebase, and Bloc/Cubit architecture. Features typing indicators, online presence, instant messaging, push notifications, and optimized real-time synchronization using Streams.
+                  </p>
+                  <span class="project-link">View Project →</span>
+                </div>
+              </a>
+              <a class="project-card" href="https://github.com/OmarShawkey13/Checkmate-Elite" target="_blank">
+                <div class="project-image" style="background-image: url(assets/images/checkmate-elite.webp)"></div>
+                <div class="project-overlay"></div>
+                <div class="project-glass">
+                  <h3>Checkmate Elite — Chess App</h3>
+                  <p>
+                    High-performance chess application built with Clean Architecture and Bloc. Features advanced game-state management, smooth animations, reusable UI systems, and performance-focused rendering with scalable architecture.
+                  </p>
                   <span class="project-link">View Project →</span>
                 </div>
               </a>
@@ -1505,8 +1593,10 @@
                 <div class="project-image" style="background-image: url(assets/images/ripple.webp)"></div>
                 <div class="project-overlay"></div>
                 <div class="project-glass">
-                  <h3>Ripple – Social Media App</h3>
-                  <p>Modern social media platform with posts, likes, comments, and notifications.</p>
+                  <h3>Ripple — Social Media App</h3>
+                  <p>
+                    Modern social media application built with Flutter and Firebase. Includes posts, comments, likes, follow system, push notifications, and scalable feature-based architecture using Bloc.
+                  </p>
                   <span class="project-link">View Project →</span>
                 </div>
               </a>
@@ -1514,31 +1604,9 @@
                 <div class="project-image" style="background-image: url(assets/images/wallix.webp)"></div>
                 <div class="project-overlay"></div>
                 <div class="project-glass">
-                  <h3>Wallix – Wallpaper App</h3>
+                  <h3>Wallix — Wallpaper App</h3>
                   <p>
-                    Open-source wallpaper application built with Flutter using Clean Architecture, BLoC, Dio, and Dartz. Features pagination, categories, favorites, and a scalable GitHub-powered backend.
-                  </p>
-                  <span class="project-link">View Project →</span>
-                </div>
-              </a>
-              <a class="project-card" href="https://com-hayatmuslim.en.uptodown.com/android" target="_blank">
-                <div class="project-image" style="background-image: url(assets/images/hayat_muslim.webp)"></div>
-                <div class="project-overlay"></div>
-                <div class="project-glass">
-                  <h3>HayatMuslim - Azkar App</h3>
-                  <p>
-                    Flutter-based Islamic Azkar application offering daily remembrances, categorized supplications, offline access, and a clean, user-friendly interface with a focus on performance, accessibility, and simplicity.
-                  </p>
-                  <span class="project-link">View Project →</span>
-                </div>
-              </a>
-              <a class="project-card" href="https://oktvs.store/" target="_blank">
-                <div class="project-image" style="background-image: url(assets/images/ok_movies.webp)"></div>
-                <div class="project-overlay"></div>
-                <div class="project-glass">
-                  <h3>OKMovies</h3>
-                  <p>
-                    OKMovies is a streaming app that lets users discover and watch thousands of movies and TV shows online for free. It provides access to trending films, popular series, classic titles, and a wide variety of entertainment content in one place, all with a user-friendly interface.
+                    Open-source wallpaper application built with Flutter using Clean Architecture, Dio, Bloc, and Dartz. Features pagination, favorites, categorized wallpapers, image editing tools, and scalable GitHub-powered content management.
                   </p>
                   <span class="project-link">View Project →</span>
                 </div>
@@ -1547,9 +1615,9 @@
                 <div class="project-image" style="background-image: url(assets/images/pulse.webp)"></div>
                 <div class="project-overlay"></div>
                 <div class="project-glass">
-                  <h3>Pulse Music Player</h3>
+                  <h3>Pulse — Music Player</h3>
                   <p>
-                    Pulse is a modern offline music player built with Flutter. It focuses on background audio playback, system-level media controls, and a clean, scalable architecture. The project was a technical challenge to integrate background playback using audio_service with state management via BLoC and reactive streams, while maintaining a clean architecture and separation of concerns.
+                    Modern offline music player focused on background audio playback, system-level media controls, reactive streams, and scalable architecture using audio_service and Bloc.
                   </p>
                   <span class="project-link">View Project →</span>
                 </div>
@@ -1558,20 +1626,31 @@
                 <div class="project-image" style="background-image: url(assets/images/vibe.webp)"></div>
                 <div class="project-overlay"></div>
                 <div class="project-glass">
-                  <h3>Vibe – Video Social Media App</h3>
+                  <h3>Vibe — Video Social Media App</h3>
                   <p>
-                    Feature-rich social media application built with Flutter and Firebase. Supports video posts, likes, comments, real-time updates, user profiles, and clean, scalable architecture using BLoC and feature-based structure.
+                    Feature-rich video social media application built with Flutter and Firebase. Supports video posts, real-time updates, comments, likes, user profiles, and scalable feature-based architecture.
                   </p>
                   <span class="project-link">View Project →</span>
                 </div>
               </a>
-              <a class="project-card" href="https://github.com/OmarShawkey13/checkmate-elite" target="_blank">
-                <div class="project-image" style="background-image: url(assets/images/checkmate-elite.webp)"></div>
+              <a class="project-card" href="https://oktvs.store/" target="_blank">
+                <div class="project-image" style="background-image: url(assets/images/ok_movies.webp)"></div>
                 <div class="project-overlay"></div>
                 <div class="project-glass">
-                  <h3>Checkmate Elite – Chess App</h3>
+                  <h3>OKMovies — Streaming Platform</h3>
                   <p>
-                    A high-performance chess application built with Clean Architecture and BLoC. Features a custom AI engine, granular state management, and premium UI/UX using Atomic Design. Focused on scalability, maintainability, and smooth 60/120 FPS performance.
+                    Modern movie and TV streaming platform focused on clean UI, content discovery, responsive browsing experience, and scalable media presentation.
+                  </p>
+                  <span class="project-link">View Project →</span>
+                </div>
+              </a>
+              <a class="project-card" href="https://com-hayatmuslim.en.uptodown.com/android" target="_blank">
+                <div class="project-image" style="background-image: url(assets/images/hayat_muslim.webp)"></div>
+                <div class="project-overlay"></div>
+                <div class="project-glass">
+                  <h3>Hayat Muslim — Azkar App</h3>
+                  <p>
+                    Islamic Azkar application providing daily remembrances, offline support, favorites system, prayer times, and lightweight responsive UI with scalable architecture.
                   </p>
                   <span class="project-link">View Project →</span>
                 </div>
@@ -1586,15 +1665,18 @@
             <div class="skills-wrap">
               <div class="skill-chip">Flutter</div>
               <div class="skill-chip">Dart</div>
-              <div class="skill-chip">Clean Architecture</div>
-              <div class="skill-chip">BLoC / Cubit</div>
               <div class="skill-chip">Firebase</div>
+              <div class="skill-chip">Bloc / Cubit</div>
+              <div class="skill-chip">Clean Architecture</div>
               <div class="skill-chip">REST APIs</div>
+              <div class="skill-chip">Dio</div>
+              <div class="skill-chip">SQLite</div>
+              <div class="skill-chip">Dartz</div>
+              <div class="skill-chip">Responsive UI</div>
+              <div class="skill-chip">Performance Optimization</div>
               <div class="skill-chip">Git &amp; GitHub</div>
               <div class="skill-chip">SOLID Principles</div>
               <div class="skill-chip">Unit Testing</div>
-              <div class="skill-chip">Responsive UI</div>
-              <div class="skill-chip">Java (Android)</div>
             </div>
           </div>
         </section>
@@ -1602,9 +1684,9 @@
           <div class="about-container">
             <h2 class="about-title">About Me</h2>
             <p class="about-text">
-              My journey as a developer started during my studies at the Institute of Business Information Systems, where I explored Android reverse engineering and enhanced existing applications using Java. This experience strengthened my analytical thinking and laid a solid foundation in mobile development.
+              My journey in programming began during high school in 2022 through Android reverse engineering using Java, where I worked on analyzing applications and dealing with Smali files — the low-level language used internally by Android after compilation. My passion for Java pushed me to dive deeper into Android development and understand how applications and internal systems work from a practical perspective.
               
-              Over time, I shifted toward building maintainable and scalable applications. After following Flutter since 2022, I fully transitioned to it in 2024, focusing on clean architecture, performance, and delivering production-ready Flutter applications.
+              Over time, my focus shifted from modifying applications to building scalable and maintainable ones. In 2024, while studying Business Information Systems, I fully transitioned into Flutter development, with a strong focus on Clean Architecture, performance optimization, and building polished production-ready applications.
             </p>
           </div>
         </section>
@@ -1612,10 +1694,10 @@
       <footer id="footer" class="footer">
         <p class="footer-text">© 2026 Omar Shawkey. All rights reserved.</p>
         <div class="footer-links">
-          <a class="footer-link" title="GitHub" href="https://github.com/OmarShawkey13" target="_blank"><img alt="GitHub" width="24" height="24" src="assets/images/github.webp"/></a>
-          <a class="footer-link" title="LinkedIn" href="https://linkedin.com/in/omarshawkey" target="_blank"><img alt="LinkedIn" width="24" height="24" src="assets/images/linkedin.webp"/></a>
-          <a class="footer-link" title="WhatsApp" href="https://wa.me/201065067453" target="_blank"><img alt="WhatsApp" width="24" height="24" src="assets/images/whatsapp.webp"/></a>
-          <a class="footer-link" title="Email" href="mailto:omar.mohamed.flutter@gmail.com" target="_blank"><img alt="Email" width="24" height="24" src="assets/images/mail.webp"/></a>
+          <a class="footer-link" title="GitHub" href="https://github.com/OmarShawkey13" target="_blank"><img alt="GitHub" src="assets/images/github.webp"/></a>
+          <a class="footer-link" title="LinkedIn" href="https://linkedin.com/in/omarshawkey" target="_blank"><img alt="LinkedIn" src="assets/images/linkedin.webp"/></a>
+          <a class="footer-link" title="WhatsApp" href="https://wa.me/201065067453" target="_blank"><img alt="WhatsApp" src="assets/images/whatsapp.webp"/></a>
+          <a class="footer-link" title="Email" href="mailto:omar.mohamed.flutter@gmail.com" target="_blank"><img alt="Email" src="assets/images/mail.webp"/></a>
         </div>
       </footer>
       <div class="theme-fab">

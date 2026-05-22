@@ -10,12 +10,12 @@ this.a=f},
 el:function el(d,e,f){this.d=d
 this.w=e
 this.a=f},
-b8:function b8(d,e){this.x=d
+b9:function b9(d,e){this.x=d
 this.a=e},
-b4:function b4(d,e,f){this.c=d
+b5:function b5(d,e,f){this.c=d
 this.at=e
 this.a=f},
-ki(){return new B.aq(null)},
+kk(){return new B.aq(null)},
 aq:function aq(d){this.a=d},
 e1:function e1(){this.d=!1
 this.c=null},
@@ -35,10 +35,10 @@ return new C.L("div",x,this.d,x,x,x,this.w,x)}}
 B.el.prototype={
 C(d){var x=null
 return new C.L("ul",x,this.d,x,x,x,this.w,x)}}
-B.b8.prototype={
+B.b9.prototype={
 C(d){var x=null,w=y.g
 return new C.L("li",x,x,x,C.M(w,w),x,this.x,x)}}
-B.b4.prototype={
+B.b5.prototype={
 C(d){var x=null,w=y.g,v=C.M(w,w)
 v.l(0,"href",this.c)
 w=C.M(w,y.a)
@@ -47,8 +47,11 @@ return new C.L("a",x,x,x,v,w,this.at,x)}}
 B.aq.prototype={
 bB(){return new B.e1()}}
 B.e1.prototype={
-C(d){var x=null,w=D.jb(A.V,x,"nav-toggle",C.bX(["click",new B.fs(this)],y.g,y.a),x,x),v=this.d?"open":"",u=y.p
-return B.jd(C.e([new B.eg("navbar",C.e([B.jd(C.e([A.av,w,new B.el("nav-items "+v,A.K,x)],u),"navbar-container")],u),x)],u),"navbar-wrapper")}}
+C(d){var x,w,v=null,u=this.d?"active":""
+u=D.jb(A.S,v,"nav-toggle "+u,C.bX(["click",new B.fs(this)],y.g,y.a),v,v)
+x=this.d?"open":""
+w=y.p
+return B.jd(C.e([new B.eg("navbar",C.e([B.jd(C.e([A.au,u,new B.el("nav-items "+x,A.J,v)],w),"navbar-container")],w),v)],w),"navbar-wrapper")}}
 var z=a.updateTypes([])
 B.fs.prototype={
 $1(d){var x
@@ -60,43 +63,45 @@ B.fr.prototype={
 $0(){var x=this.a
 return x.d=!x.d},
 $S:0};(function inheritance(){var x=a.inheritMany,w=a.inherit
-x(D.H,[B.eg,B.cM,B.el,B.b8,B.b4])
+x(D.H,[B.eg,B.cM,B.el,B.b9,B.b5])
 w(B.aq,D.aj)
 w(B.e1,D.a5)
 w(B.fs,C.ai)
 w(B.fr,C.bd)})()
-C.fx(b.typeUniverse,JSON.parse('{"eg":{"H":[],"j":[]},"cM":{"H":[],"j":[]},"el":{"H":[],"j":[]},"b8":{"H":[],"j":[]},"b4":{"H":[],"j":[]},"aq":{"aj":[],"j":[]},"e1":{"a5":["aq"],"a5.T":"aq"}}'))
+C.fx(b.typeUniverse,JSON.parse('{"eg":{"H":[],"j":[]},"cM":{"H":[],"j":[]},"el":{"H":[],"j":[]},"b9":{"H":[],"j":[]},"b5":{"H":[],"j":[]},"aq":{"aj":[],"j":[]},"e1":{"a5":["aq"],"a5.T":"aq"}}'))
 var y={p:C.B("q<j>"),g:C.B("b"),f:C.B("~"),a:C.B("~(m)")};(function constants(){var x=a.makeConstList
-A.a3=new C.ac("Home",null)
-A.N=x([A.a3],y.p)
-A.as=new B.b4("#home",A.N,null)
-A.L=x([A.as],y.p)
-A.aw=new B.b8(A.L,null)
-A.a5=new C.ac("Projects",null)
-A.P=x([A.a5],y.p)
-A.ar=new B.b4("#projects",A.P,null)
-A.R=x([A.ar],y.p)
-A.ay=new B.b8(A.R,null)
-A.a6=new C.ac("Skills",null)
-A.Q=x([A.a6],y.p)
-A.at=new B.b4("#skills",A.Q,null)
-A.U=x([A.at],y.p)
-A.az=new B.b8(A.U,null)
-A.a2=new C.ac("About",null)
+A.a2=new C.ac("Home",null)
 A.M=x([A.a2],y.p)
-A.au=new B.b4("#about",A.M,null)
-A.T=x([A.au],y.p)
-A.ax=new B.b8(A.T,null)
-A.K=x([A.aw,A.ay,A.az,A.ax],y.p)
-A.k=new D.b9("bar",null,E.t,null)
-A.V=x([A.k,A.k,A.k],y.p)
-A.a4=new C.ac("O",null)
+A.ar=new B.b5("#home",A.M,null)
+A.K=x([A.ar],y.p)
+A.av=new B.b9(A.K,null)
+A.a4=new C.ac("Projects",null)
 A.O=x([A.a4],y.p)
-A.aB=new D.b9("logo-box",null,A.O,null)
-A.a7=new C.ac("Omar Shawkey",null)
-A.W=x([A.a7],y.p)
-A.aA=new D.b9("logo-text",null,A.W,null)
-A.S=x([A.aB,A.aA],y.p)
-A.av=new B.cM("logo",A.S,null)})()};
-(a=>{a["SO5OQIC7jGgIJBxdC4xENCtG11U="]=a.current})($__dart_deferred_initializers__);
+A.aq=new B.b5("#projects",A.O,null)
+A.Q=x([A.aq],y.p)
+A.ax=new B.b9(A.Q,null)
+A.a5=new C.ac("Skills",null)
+A.P=x([A.a5],y.p)
+A.as=new B.b5("#skills",A.P,null)
+A.U=x([A.as],y.p)
+A.ay=new B.b9(A.U,null)
+A.a1=new C.ac("About",null)
+A.L=x([A.a1],y.p)
+A.at=new B.b5("#about",A.L,null)
+A.T=x([A.at],y.p)
+A.aw=new B.b9(A.T,null)
+A.J=x([A.av,A.ax,A.ay,A.aw],y.p)
+A.aA=new D.az("bar bar-1",null,E.i,null)
+A.az=new D.az("bar bar-2",null,E.i,null)
+A.aD=new D.az("bar bar-3",null,E.i,null)
+A.S=x([A.aA,A.az,A.aD],y.p)
+A.a3=new C.ac("O",null)
+A.N=x([A.a3],y.p)
+A.aC=new D.az("logo-box",null,A.N,null)
+A.a6=new C.ac("Omar Shawkey",null)
+A.V=x([A.a6],y.p)
+A.aB=new D.az("logo-text",null,A.V,null)
+A.R=x([A.aC,A.aB],y.p)
+A.au=new B.cM("logo",A.R,null)})()};
+(a=>{a["Y09vDPYuP1/mu/X+chsnOnAkFMg="]=a.current})($__dart_deferred_initializers__);
 //# sourceMappingURL=main.client.dart.js_3.part.js.map
