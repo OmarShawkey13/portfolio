@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@import 'variables.css';
+@import 'base.css';
+@import 'components/navbar.css';
+@import 'components/hero.css';
+@import 'components/projects.css';
+@import 'components/skills.css';
+@import 'components/about.css';
+@import 'components/footer.css';
+@import 'components/theme.css';
+@import 'responsive.css';

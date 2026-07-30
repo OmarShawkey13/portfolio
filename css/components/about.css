@@ -1,0 +1,33 @@
+/* ABOUT SECTION */
+.about-section {
+  width: 100%;
+  padding: 80px 48px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.02));
+}
+
+.about-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.about-title {
+  margin: 0 0 16px 0;
+  font-size: 3.2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.about-text {
+  max-width: 900px;
+  color: rgba(107, 114, 128, 0.85);
+  font-size: 18px;
+  line-height: 1.8em;
+  white-space: pre-line;
+  text-wrap: pretty;
+  hyphens: auto;
+}
+[data-theme='dark'] .about-text {
+  color: rgba(161, 161, 170, 0.85);
+}
