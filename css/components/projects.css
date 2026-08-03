@@ -101,6 +101,36 @@
   background: var(--gradient-glass-dark);
 }
 
+.project-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.tag {
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.tag-playstore {
+  background-color: rgba(67, 160, 71, 0.2);
+  color: #81C784;
+  border: 1px solid rgba(67, 160, 71, 0.3);
+}
+
+.tag-opensource {
+  background-color: rgba(60, 120, 255, 0.2);
+  color: #82B1FF;
+  border: 1px solid rgba(60, 120, 255, 0.3);
+}
+
 .project-glass h3 {
   margin: 0;
   font-size: 1.2rem;
