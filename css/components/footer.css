@@ -50,8 +50,9 @@
 }
 
 .footer-link:hover {
-  transform: scale(1.15);
-  background-color: rgba(60, 120, 255, 0.1);
+  transform: translateY(-4px) scale(1.15);
+  background-color: var(--glow-color);
+  box-shadow: 0 4px 12px var(--glow-color);
 }
 
 .footer-link:hover img {

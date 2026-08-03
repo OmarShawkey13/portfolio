@@ -86,19 +86,19 @@
   position: absolute;
   left: 16px; right: 16px; bottom: 16px;
   padding: 20px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid var(--border-color);
   border-radius: 18px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transition: all 350ms;
   transform: translateY(12px);
-  background: linear-gradient(135deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+  background: var(--gradient-glass);
   will-change: transform;
 }
 
 .project-card:hover .project-glass {
   transform: translateY(0);
-  background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.07));
+  background: var(--gradient-glass-dark);
 }
 
 .project-glass h3 {

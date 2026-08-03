@@ -49,9 +49,9 @@
 }
 
 .skill-chip:hover {
-  box-shadow: 0 8px 24px rgba(60, 120, 255, 0.3);
-  transform: scale(1.08);
+  box-shadow: 0 8px 24px var(--glow-color);
+  transform: translateY(-4px) scale(1.05);
   color: white;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background: var(--gradient-primary);
   border-color: transparent;
 }
