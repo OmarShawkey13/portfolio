@@ -1,130 +1,219 @@
-/* NAVBAR */
+/* ==========================================================================
+   NAVBAR (2026 Floating Glass Pill)
+   ========================================================================== */
+
 .navbar-wrapper {
-  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  flex-direction: column;
-  align-items: center;
+  z-index: 1000;
+  padding: 20px 24px;
+  transition: padding var(--duration-normal) var(--ease-smooth);
+}
+
+.navbar-wrapper.scrolled {
+  padding: 12px 24px;
 }
 
 .navbar {
-  position: fixed;
-  z-index: 100;
-  width: 100%;
-  padding: 0 32px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background: var(--navbar-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  background-color: var(--navbar-bg);
-  top: 0;
-  left: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-normal) var(--ease-smooth);
+}
+
+.navbar-wrapper.scrolled .navbar {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
 }
 
 .navbar-container {
   display: flex;
-  width: 100%;
-  max-width: 1200px;
-  padding: 20px 0;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+  width: 100%;
 }
 
+/* Brand Logo */
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 1.125rem;
+  letter-spacing: -0.02em;
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.logo:hover {
+  transform: scale(1.02);
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.35);
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.logo:hover .logo-box {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+.logo-text {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.logo-badge {
+  font-size: 10px;
+  font-family: var(--font-mono);
+  padding: 2px 6px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border-radius: 6px;
+  font-weight: 600;
+  margin-left: -4px;
+}
+
+/* Nav Menu Items */
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  position: relative;
+  display: inline-block;
+  padding: 8px 16px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: color var(--duration-fast) var(--ease-smooth), background-color var(--duration-fast) var(--ease-smooth);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background-color: var(--border-subtle);
+}
+
+.nav-link.active {
+  color: var(--primary);
+  background-color: var(--tag-bg);
+  font-weight: 600;
+}
+
+/* Nav Right Actions */
+.nav-actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.logo-box {
-  display: flex;
-  width: 38px;
-  height: 38px;
-  border-radius: 12px;
-  box-shadow: 0 3px 15px var(--glow-color);
-  justify-content: center;
+.nav-cta-btn {
+  display: inline-flex;
   align-items: center;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1em;
-  background: var(--gradient-primary);
-}
-
-.logo-text {
-  color: var(--text-primary);
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  transition: color 0.3s;
-}
-
-.logo:hover .logo-text {
-  background: var(--gradient-primary);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.nav-items {
-  display: flex;
-  padding: 0;
-  margin: 0;
-  align-items: center;
-  gap: 32px;
-  list-style: none;
-}
-
-.nav-items a {
-  position: relative;
-  transition: color 200ms;
-  color: var(--text-secondary);
-  font-size: 15px;
-  font-weight: 500;
+  gap: 6px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 999px;
+  background: var(--text-primary);
+  color: var(--text-inverse);
   text-decoration: none;
+  transition: all var(--duration-fast) var(--ease-spring);
 }
 
-.nav-items a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 0%;
-  height: 2px;
+.nav-cta-btn:hover {
   background: var(--primary);
-  transition: width 250ms ease;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.35);
 }
 
-.nav-items a:hover::after {
-  width: 100%;
+/* Theme Toggle Button in Nav */
+.theme-nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface-glass);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-spring);
 }
 
-.nav-items a:hover {
+.theme-nav-toggle:hover {
+  border-color: var(--primary);
   color: var(--primary);
+  transform: rotate(20deg) scale(1.05);
 }
 
+.theme-nav-toggle svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Mobile Nav Toggle */
 .nav-toggle {
   display: none;
-  padding: 4px;
-  border: unset;
-  cursor: pointer;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  background: var(--surface-glass);
+  cursor: pointer;
   gap: 5px;
-  background-color: transparent;
+  transition: background-color var(--duration-fast);
 }
 
 .nav-toggle .bar {
-  width: 24px;
+  width: 18px;
   height: 2px;
-  transition: all 250ms;
-  background-color: var(--text-secondary);
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: all var(--duration-normal) var(--ease-spring);
 }
 
 .nav-toggle.active .bar-1 {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: translateY(7px) rotate(45deg);
 }
+
 .nav-toggle.active .bar-2 {
   opacity: 0;
+  transform: scaleX(0);
 }
+
 .nav-toggle.active .bar-3 {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: translateY(-7px) rotate(-45deg);
 }

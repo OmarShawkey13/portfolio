@@ -1,272 +1,808 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Omar Shawkey - Portfolio</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Omar Shawkey — Senior Flutter & Mobile Systems Engineer</title>
+    <meta name="description" content="Portfolio of Omar Shawkey, a Flutter & Mobile Developer specializing in Clean Architecture, BLoC, real-time systems, and native Android integrations.">
+    <meta name="keywords" content="Omar Shawkey, Flutter Developer, Mobile Engineer, Clean Architecture, BLoC, Dart, Kotlin, Android IME, Mobile Apps">
+    <meta name="author" content="Omar Shawkey">
+    
+    <!-- Open Graph / Social Sharing -->
+    <meta property="og:title" content="Omar Shawkey — Flutter & Mobile Systems Engineer">
+    <meta property="og:description" content="Explore production mobile applications, Clean Architecture systems, and native Android tools built by Omar Shawkey.">
+    <meta property="og:image" content="assets/images/profile.webp">
+    <meta property="og:type" content="website">
+    
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Google Fonts Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Main Stylesheet -->
     <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+    <!-- Scroll Progress Indicator -->
+    <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Ambient Background Lighting Orbs -->
+    <div class="bg-ambient-light" aria-hidden="true">
+        <div class="ambient-orb ambient-orb-1"></div>
+        <div class="ambient-orb ambient-orb-2"></div>
+        <div class="ambient-orb ambient-orb-3"></div>
+    </div>
+
     <div class="app-root">
-        <!-- NavBar -->
-        <div class="navbar-wrapper">
-            <nav class="navbar">
+        <!-- Floating Glass Navigation -->
+        <header class="navbar-wrapper">
+            <nav class="navbar" aria-label="Main Navigation">
                 <div class="navbar-container">
-                    <div class="logo">
+                    <a href="#home" class="logo" aria-label="Omar Shawkey Home">
                         <span class="logo-box">O</span>
                         <span class="logo-text">Omar Shawkey</span>
-                    </div>
+                        <span class="logo-badge">FLUTTER</span>
+                    </a>
                     
-                    <button class="nav-toggle">
-                        <span class="bar bar-1"></span>
-                        <span class="bar bar-2"></span>
-                        <span class="bar bar-3"></span>
-                    </button>
-
-                    <ul class="nav-items">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#about">About</a></li>
+                    <ul class="nav-items" id="nav-menu">
+                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#projects" class="nav-link">Projects</a></li>
+                        <li><a href="#skills" class="nav-link">Skills</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
                     </ul>
+
+                    <div class="nav-actions">
+                        <button class="theme-nav-toggle" id="theme-toggle-nav" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+                            <!-- SVG injected via js/theme.js -->
+                        </button>
+
+                        <a href="#contact" class="nav-cta-btn">
+                            <span>Let's Talk</span>
+                            <svg class="btn-icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42L16.86 11H5v2z"/></svg>
+                        </a>
+
+                        <button class="nav-toggle" id="nav-toggle-btn" aria-label="Open Navigation Menu" aria-expanded="false" aria-controls="nav-menu">
+                            <span class="bar bar-1"></span>
+                            <span class="bar bar-2"></span>
+                            <span class="bar bar-3"></span>
+                        </button>
+                    </div>
                 </div>
             </nav>
-        </div>
+        </header>
 
-        <div class="app-content">
+        <main class="app-content">
             <!-- Hero Section -->
-            <section id="home" class="hero_section">
-                <div class="hero-section">
-                    <div class="hero-content">
-                        <div class="hero-pill animate-on-scroll fade-up">
-                            <span>👋 Welcome to my portfolio</span>
+            <section id="home" class="hero-section" aria-label="Hero Section">
+                <div class="hero-content">
+                    <div class="hero-status-badge animate-on-scroll fade-up">
+                        <div class="status-dot-wrapper">
+                            <div class="status-dot-ping"></div>
+                            <div class="status-dot-core"></div>
                         </div>
-                        
-                        <h1 class="hero-title animate-on-scroll fade-up delay-100">
-                            <span>Building digital</span><br>
-                            <span class="hero-highlight">products, brands,</span><br>
-                            <span>and experiences.</span>
-                        </h1>
-                        
-                        <p class="hero-description animate-on-scroll fade-up delay-200">
-                            I am a Flutter Developer specialized in building mobile and web apps <br class="desktop-only">
-                            with Clean Architecture and scalable code.
-                        </p>
-                        
-                        <div class="hero-actions animate-on-scroll fade-up delay-300">
-                            <a href="assets/cv/omar_shawkey.pdf" target="_blank" class="btn btn-primary">
-                                <span class="btn-icon download"></span>
-                                <span>Download CV</span>
-                            </a>
-                            <a href="https://github.com/OmarShawkey13" target="_blank" class="btn btn-outline">
-                                <span class="btn-icon github"></span>
-                                <span>GitHub Profile</span>
-                            </a>
-                        </div>
-                        
-                        <div class="spaceY"></div>
-                        
-                        <div class="hero-stats animate-on-scroll fade-up delay-400">
-                            <div class="hero-stat">
-                                <span class="hero-stat-value">2+</span>
-                                <span class="hero-stat-label">Years Exp.</span>
-                            </div>
-                            <div class="hero-stat-divider"></div>
-                            <div class="hero-stat">
-                                <span class="hero-stat-value">7+</span>
-                                <span class="hero-stat-label">Projects</span>
-                            </div>
-                            <div class="hero-stat-divider"></div>
-                            <div class="hero-stat">
-                                <span class="hero-stat-value">2+</span>
-                                <span class="hero-stat-label">Clients</span>
-                            </div>
-                        </div>
+                        <span>Available for Full-time Roles &amp; High-Impact Projects</span>
                     </div>
                     
-                    <div class="hero-image-wrapper animate-on-scroll zoom-in floating delay-200">
-                        <div class="hero-bg-circle pulse-glow"></div>
-                        <div class="hero-image-circle"></div>
-                        <div class="hero-badge-wrapper">
-                            <div class="hero-badge">
-                                <span class="hero-badge-icon"></span>
-                                <span class="hero-badge-text">Flutter Expert</span>
+                    <h1 class="hero-title animate-on-scroll fade-up delay-100">
+                        Architecting scalable <span class="hero-gradient-text">mobile apps</span> &amp; robust Flutter systems.
+                    </h1>
+                    
+                    <p class="hero-description animate-on-scroll fade-up delay-200">
+                        I am a <strong>Flutter &amp; Mobile Engineer</strong> dedicated to building high-performance, production-grade applications with <strong>Clean Architecture</strong>, reactive state management (BLoC), and seamless native system integrations.
+                    </p>
+                    
+                    <div class="hero-actions animate-on-scroll fade-up delay-300">
+                        <a href="assets/cv/omar_shawkey.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="hero-cv-btn">
+                            <svg class="btn-icon-svg bounce-down" viewBox="0 0 24 24"><path fill="currentColor" d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+                            <span>Download CV</span>
+                        </a>
+
+                        <a href="https://github.com/OmarShawkey13" target="_blank" rel="noopener noreferrer" class="btn btn-outline" id="hero-github-btn">
+                            <svg class="btn-icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                            <span>GitHub Profile</span>
+                        </a>
+
+                        <a href="#contact" class="btn btn-secondary">
+                            <span>Get in Touch</span>
+                        </a>
+                    </div>
+                    
+                    <div class="hero-stats animate-on-scroll fade-up delay-400">
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number" data-target="2">
+                                <span class="counter-value">0</span><span class="hero-stat-plus">+</span>
                             </div>
+                            <span class="hero-stat-label">Years Experience</span>
+                        </div>
+                        
+                        <div class="hero-stat-divider" aria-hidden="true"></div>
+                        
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number" data-target="7">
+                                <span class="counter-value">0</span><span class="hero-stat-plus">+</span>
+                            </div>
+                            <span class="hero-stat-label">Production Projects</span>
+                        </div>
+                        
+                        <div class="hero-stat-divider" aria-hidden="true"></div>
+                        
+                        <div class="hero-stat-item">
+                            <div class="hero-stat-number" data-target="100">
+                                <span class="counter-value">0</span><span class="hero-stat-plus">%</span>
+                            </div>
+                            <span class="hero-stat-label">Clean Architecture</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Interactive 3D Hero Visual -->
+                <div class="hero-visual animate-on-scroll zoom-in delay-200">
+                    <div class="hero-card-wrapper tilt-effect">
+                        <div class="hero-card-glow" aria-hidden="true"></div>
+                        
+                        <div class="hero-avatar-frame">
+                            <img src="assets/images/profile.webp" alt="Omar Shawkey - Flutter Engineer" class="hero-avatar-img" width="340" height="340" loading="eager">
+                        </div>
+
+                        <!-- Interactive Floating Badges -->
+                        <div class="floating-badge floating-badge-1">
+                            <span class="badge-verified-dot"></span>
+                            <span>Flutter &amp; Dart Expert</span>
+                        </div>
+
+                        <div class="floating-badge floating-badge-2">
+                            <svg class="badge-icon-svg" viewBox="0 0 24 24"><path fill="#10B981" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                            <span>Clean Architecture</span>
+                        </div>
+
+                        <div class="floating-badge floating-badge-3">
+                            <svg class="badge-icon-svg" viewBox="0 0 24 24"><path fill="#38BDF8" d="M17.6 9.48l1.84-3.18c.16-.31.04-.69-.26-.85a.637.637 0 0 0-.85.26l-1.89 3.27C15.01 8.37 13.56 8 12 8s-3.01.37-4.44.98L5.67 5.71a.637.637 0 0 0-.85-.26c-.31.16-.42.54-.26.85l1.84 3.18C3.81 11.09 2 14.32 2 18h20c0-3.68-1.81-6.91-4.4-8.52zM7 15.25c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25zm10 0c-.69 0-1.25-.56-1.25-1.25s.56-1.25 1.25-1.25 1.25.56 1.25 1.25-.56 1.25-1.25 1.25z"/></svg>
+                            <span>Android Kotlin IME</span>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Projects Section -->
-            <section id="projects" class="projects-section">
-                <div class="projects-container">
-                    <h2 class="projects-title animate-on-scroll fade-up">Selected Work</h2>
-                    <p class="projects-subtitle animate-on-scroll fade-up delay-100">A curated selection of projects focused on clean architecture and polished UX.</p>
-                    
-                    <div class="projects-grid">
-                        <!-- Project 1 -->
-                        <a href="https://play.google.com/store/apps/details?id=rc.keyboard" target="_blank" class="project-card animate-on-scroll fade-up delay-100">
-                            <div class="project-image" style="background-image: url('assets/images/rckeyboard.webp');"></div>
-                            <div class="project-overlay"></div>
-                            <div class="project-glass">
-                                <div class="project-tags">
-                                    <span class="tag tag-playstore">Google Play</span>
-                                </div>
-                                <h3>RCKeyBoard — Custom Android Keyboard</h3>
-                                <p>High-performance Android Input Method Engine (IME) built with Kotlin and SQLite. Features a privacy-first local prediction engine, real-time math equation solving, sensitive field detection, secure clipboard manager, and dynamic UI theming.</p>
-                                <span class="project-link">View Project →</span>
-                            </div>
-                        </a>
-                        <!-- Project 2 -->
-                        <a href="https://github.com/OmarShawkey13/piko" target="_blank" class="project-card animate-on-scroll fade-up delay-200">
-                            <div class="project-image" style="background-image: url('assets/images/piko.webp');"></div>
-                            <div class="project-overlay"></div>
-                            <div class="project-glass">
-                                <div class="project-tags">
-                                    <span class="tag tag-opensource">Open Source</span>
-                                </div>
-                                <h3>Piko — Real-Time Chat App</h3>
-                                <p>Real-time chat application built with Flutter, Firebase, and Bloc/Cubit architecture. Features typing indicators, online presence, instant messaging, push notifications, and optimized real-time synchronization using Streams.</p>
-                                <span class="project-link">View Project →</span>
-                            </div>
-                        </a>
-                        <!-- Project 3 -->
-                        <a href="https://github.com/OmarShawkey13/Checkmate-Elite" target="_blank" class="project-card animate-on-scroll fade-up delay-300">
-                            <div class="project-image" style="background-image: url('assets/images/checkmate-elite.webp');"></div>
-                            <div class="project-overlay"></div>
-                            <div class="project-glass">
-                                <div class="project-tags">
-                                    <span class="tag tag-opensource">Open Source</span>
-                                </div>
-                                <h3>Checkmate Elite — Chess App</h3>
-                                <p>High-performance chess application built with Clean Architecture and Bloc. Features advanced game-state management, smooth animations, reusable UI systems, and performance-focused rendering with scalable architecture.</p>
-                                <span class="project-link">View Project →</span>
-                            </div>
-                        </a>
-                        <!-- Project 4 -->
-                        <a href="https://github.com/OmarShawkey13/ripple" target="_blank" class="project-card animate-on-scroll fade-up delay-400">
-                            <div class="project-image" style="background-image: url('assets/images/ripple.webp');"></div>
-                            <div class="project-overlay"></div>
-                            <div class="project-glass">
-                                <div class="project-tags">
-                                    <span class="tag tag-opensource">Open Source</span>
-                                </div>
-                                <h3>Ripple — Social Media App</h3>
-                                <p>Modern social media application built with Flutter and Firebase. Includes posts, comments, likes, follow system, push notifications, and scalable feature-based architecture using Bloc.</p>
-                                <span class="project-link">View Project →</span>
-                            </div>
-                        </a>
-                        <!-- Project 5 -->
-                        <a href="https://github.com/OmarShawkey13/wallix" target="_blank" class="project-card animate-on-scroll fade-up delay-100">
-                            <div class="project-image" style="background-image: url('assets/images/wallix.webp');"></div>
-                            <div class="project-overlay"></div>
-                            <div class="project-glass">
-                                <div class="project-tags">
-                                    <span class="tag tag-opensource">Open Source</span>
-                                </div>
-                                <h3>Wallix — Wallpaper App</h3>
-                                <p>Open-source wallpaper application built with Flutter using Clean Architecture, Dio, Bloc, and Dartz. Features pagination, favorites, categorized wallpapers, image editing tools, and scalable GitHub-powered content management.</p>
-                                <span class="project-link">View Project →</span>
-                            </div>
-                        </a>
-                        <!-- Project 6 -->
-                        <a href="https://github.com/OmarShawkey13/pulse" target="_blank" class="project-card animate-on-scroll fade-up delay-200">
-                            <div class="project-image" style="background-image: url('assets/images/pulse.webp');"></div>
-                            <div class="project-overlay"></div>
-                            <div class="project-glass">
-                                <div class="project-tags">
-                                    <span class="tag tag-opensource">Open Source</span>
-                                </div>
-                                <h3>Pulse — Music Player</h3>
-                                <p>Modern offline music player focused on background audio playback, system-level media controls, reactive streams, and scalable architecture using audio_service and Bloc.</p>
-                                <span class="project-link">View Project →</span>
-                            </div>
-                        </a>
-                        <!-- Project 7 -->
-                        <a href="https://github.com/OmarShawkey13/vibe" target="_blank" class="project-card animate-on-scroll fade-up delay-300">
-                            <div class="project-image" style="background-image: url('assets/images/vibe.webp');"></div>
-                            <div class="project-overlay"></div>
-                            <div class="project-glass">
-                                <div class="project-tags">
-                                    <span class="tag tag-opensource">Open Source</span>
-                                </div>
-                                <h3>Vibe — Video Social Media App</h3>
-                                <p>Feature-rich video social media application built with Flutter and Firebase. Supports video posts, real-time updates, comments, likes, user profiles, and scalable feature-based architecture.</p>
-                                <span class="project-link">View Project →</span>
-                            </div>
-                        </a>
+            <section id="projects" class="projects-section" aria-label="Selected Projects">
+                <div class="section-header animate-on-scroll fade-up">
+                    <div class="section-tag">
+                        <span class="section-tag-dot"></span>
+                        <span>Portfolio Work</span>
                     </div>
+                    <h2 class="section-title">Selected Projects &amp; Systems</h2>
+                    <p class="section-subtitle">A curated showcase of production mobile applications, system tools, and open-source packages engineered with architectural rigor.</p>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="projects-filter-bar animate-on-scroll fade-up delay-100" role="tablist" aria-label="Project Filter Tabs">
+                    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+                        <span>All Work</span>
+                        <span class="filter-count">7</span>
+                    </button>
+                    <button class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">
+                        <span>Mobile Apps</span>
+                        <span class="filter-count">4</span>
+                    </button>
+                    <button class="filter-btn" data-filter="native" role="tab" aria-selected="false">
+                        <span>Systems &amp; IME</span>
+                        <span class="filter-count">1</span>
+                    </button>
+                    <button class="filter-btn" data-filter="media" role="tab" aria-selected="false">
+                        <span>Audio &amp; Media</span>
+                        <span class="filter-count">2</span>
+                    </button>
+                </div>
+
+                <!-- Projects Grid -->
+                <div class="projects-grid">
+                    <!-- Project 1: RCKeyBoard -->
+                    <article class="project-card spotlight-card animate-on-scroll fade-up delay-100" data-category="native">
+                        <div class="project-image-container">
+                            <img src="assets/images/rckeyboard.webp" alt="RCKeyBoard Android Keyboard Preview" class="project-image" loading="lazy">
+                            <div class="project-image-overlay"></div>
+                            <div class="project-image-badges">
+                                <span class="project-badge badge-playstore">Google Play</span>
+                                <span class="project-badge badge-featured">Featured System</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-body">
+                            <h3 class="project-title">RCKeyBoard — Custom Android Keyboard</h3>
+                            <p class="project-summary">High-performance Android Input Method Engine (IME) built with Kotlin and SQLite. Features a privacy-first local prediction engine, real-time math equation solving, sensitive field detection, secure clipboard manager, and dynamic UI theming.</p>
+                            
+                            <div class="project-tech-stack">
+                                <span class="tech-chip">Kotlin</span>
+                                <span class="tech-chip">Android IME</span>
+                                <span class="tech-chip">SQLite</span>
+                                <span class="tech-chip">Clean Code</span>
+                            </div>
+
+                            <div class="project-footer">
+                                <div class="project-actions">
+                                    <a href="https://play.google.com/store/apps/details?id=rc.keyboard" target="_blank" rel="noopener noreferrer" class="project-action-link" title="Open Google Play Store">
+                                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M3 20.5v-17c0-.83.67-1.5 1.5-1.5c.34 0 .67.12.94.33l13.5 8.5c.67.42.92 1.3.5 1.97c-.12.2-.29.37-.5.5l-13.5 8.5c-.27.21-.6.33-.94.33c-.83 0-1.5-.67-1.5-1.5z"/></svg>
+                                        <span>Play Store</span>
+                                    </a>
+                                </div>
+                                <button class="project-modal-btn" data-open-modal="rckeyboard" aria-label="View RCKeyBoard Architecture Details">
+                                    <span>Architecture Deep-Dive</span>
+                                    <span>→</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 2: Piko -->
+                    <article class="project-card spotlight-card animate-on-scroll fade-up delay-200" data-category="mobile">
+                        <div class="project-image-container">
+                            <img src="assets/images/piko.webp" alt="Piko Chat App Preview" class="project-image" loading="lazy">
+                            <div class="project-image-overlay"></div>
+                            <div class="project-image-badges">
+                                <span class="project-badge badge-opensource">Open Source</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-body">
+                            <h3 class="project-title">Piko — Real-Time Chat App</h3>
+                            <p class="project-summary">Real-time chat application built with Flutter, Firebase, and Bloc/Cubit architecture. Features typing indicators, online presence, instant messaging, push notifications, and optimized real-time synchronization using reactive Streams.</p>
+                            
+                            <div class="project-tech-stack">
+                                <span class="tech-chip">Flutter</span>
+                                <span class="tech-chip">Dart</span>
+                                <span class="tech-chip">Firebase</span>
+                                <span class="tech-chip">Bloc / Cubit</span>
+                            </div>
+
+                            <div class="project-footer">
+                                <div class="project-actions">
+                                    <a href="https://github.com/OmarShawkey13/piko" target="_blank" rel="noopener noreferrer" class="project-action-link" title="Open GitHub Repository">
+                                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <button class="project-modal-btn" data-open-modal="piko" aria-label="View Piko Architecture Details">
+                                    <span>Architecture Deep-Dive</span>
+                                    <span>→</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 3: Checkmate Elite -->
+                    <article class="project-card spotlight-card animate-on-scroll fade-up delay-100" data-category="mobile">
+                        <div class="project-image-container">
+                            <img src="assets/images/checkmate-elite.webp" alt="Checkmate Elite Chess App Preview" class="project-image" loading="lazy">
+                            <div class="project-image-overlay"></div>
+                            <div class="project-image-badges">
+                                <span class="project-badge badge-opensource">Open Source</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-body">
+                            <h3 class="project-title">Checkmate Elite — Chess App</h3>
+                            <p class="project-summary">High-performance chess application built with Clean Architecture and Bloc. Features advanced game-state management, smooth animations, reusable UI systems, and performance-focused rendering with scalable architecture.</p>
+                            
+                            <div class="project-tech-stack">
+                                <span class="tech-chip">Flutter</span>
+                                <span class="tech-chip">Dart</span>
+                                <span class="tech-chip">Clean Arch</span>
+                                <span class="tech-chip">Bloc</span>
+                            </div>
+
+                            <div class="project-footer">
+                                <div class="project-actions">
+                                    <a href="https://github.com/OmarShawkey13/Checkmate-Elite" target="_blank" rel="noopener noreferrer" class="project-action-link" title="Open GitHub Repository">
+                                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <button class="project-modal-btn" data-open-modal="checkmate-elite" aria-label="View Checkmate Elite Architecture Details">
+                                    <span>Architecture Deep-Dive</span>
+                                    <span>→</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 4: Ripple -->
+                    <article class="project-card spotlight-card animate-on-scroll fade-up delay-200" data-category="mobile">
+                        <div class="project-image-container">
+                            <img src="assets/images/ripple.webp" alt="Ripple Social Media App Preview" class="project-image" loading="lazy">
+                            <div class="project-image-overlay"></div>
+                            <div class="project-image-badges">
+                                <span class="project-badge badge-opensource">Open Source</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-body">
+                            <h3 class="project-title">Ripple — Social Media App</h3>
+                            <p class="project-summary">Modern social media application built with Flutter and Firebase. Includes posts, comments, likes, follow system, push notifications, and scalable feature-based architecture using Bloc.</p>
+                            
+                            <div class="project-tech-stack">
+                                <span class="tech-chip">Flutter</span>
+                                <span class="tech-chip">Firebase</span>
+                                <span class="tech-chip">Bloc</span>
+                                <span class="tech-chip">Cloud Sync</span>
+                            </div>
+
+                            <div class="project-footer">
+                                <div class="project-actions">
+                                    <a href="https://github.com/OmarShawkey13/ripple" target="_blank" rel="noopener noreferrer" class="project-action-link" title="Open GitHub Repository">
+                                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <button class="project-modal-btn" data-open-modal="ripple" aria-label="View Ripple Architecture Details">
+                                    <span>Architecture Deep-Dive</span>
+                                    <span>→</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 5: Wallix -->
+                    <article class="project-card spotlight-card animate-on-scroll fade-up delay-100" data-category="media">
+                        <div class="project-image-container">
+                            <img src="assets/images/wallix.webp" alt="Wallix Wallpaper App Preview" class="project-image" loading="lazy">
+                            <div class="project-image-overlay"></div>
+                            <div class="project-image-badges">
+                                <span class="project-badge badge-opensource">Open Source</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-body">
+                            <h3 class="project-title">Wallix — Wallpaper App</h3>
+                            <p class="project-summary">Open-source wallpaper application built with Flutter using Clean Architecture, Dio, Bloc, and Dartz. Features pagination, favorites, categorized wallpapers, image editing tools, and scalable GitHub-powered content management.</p>
+                            
+                            <div class="project-tech-stack">
+                                <span class="tech-chip">Flutter</span>
+                                <span class="tech-chip">Dio REST</span>
+                                <span class="tech-chip">Dartz FP</span>
+                                <span class="tech-chip">Bloc</span>
+                            </div>
+
+                            <div class="project-footer">
+                                <div class="project-actions">
+                                    <a href="https://github.com/OmarShawkey13/wallix" target="_blank" rel="noopener noreferrer" class="project-action-link" title="Open GitHub Repository">
+                                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <button class="project-modal-btn" data-open-modal="wallix" aria-label="View Wallix Architecture Details">
+                                    <span>Architecture Deep-Dive</span>
+                                    <span>→</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 6: Pulse -->
+                    <article class="project-card spotlight-card animate-on-scroll fade-up delay-200" data-category="media">
+                        <div class="project-image-container">
+                            <img src="assets/images/pulse.webp" alt="Pulse Music Player Preview" class="project-image" loading="lazy">
+                            <div class="project-image-overlay"></div>
+                            <div class="project-image-badges">
+                                <span class="project-badge badge-opensource">Open Source</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-body">
+                            <h3 class="project-title">Pulse — Music Player</h3>
+                            <p class="project-summary">Modern offline music player focused on background audio playback, system-level media controls, reactive streams, and scalable architecture using audio_service and Bloc.</p>
+                            
+                            <div class="project-tech-stack">
+                                <span class="tech-chip">Flutter</span>
+                                <span class="tech-chip">audio_service</span>
+                                <span class="tech-chip">just_audio</span>
+                                <span class="tech-chip">Bloc</span>
+                            </div>
+
+                            <div class="project-footer">
+                                <div class="project-actions">
+                                    <a href="https://github.com/OmarShawkey13/pulse" target="_blank" rel="noopener noreferrer" class="project-action-link" title="Open GitHub Repository">
+                                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <button class="project-modal-btn" data-open-modal="pulse" aria-label="View Pulse Architecture Details">
+                                    <span>Architecture Deep-Dive</span>
+                                    <span>→</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Project 7: Vibe -->
+                    <article class="project-card spotlight-card animate-on-scroll fade-up delay-100" data-category="mobile">
+                        <div class="project-image-container">
+                            <img src="assets/images/vibe.webp" alt="Vibe Video Social App Preview" class="project-image" loading="lazy">
+                            <div class="project-image-overlay"></div>
+                            <div class="project-image-badges">
+                                <span class="project-badge badge-opensource">Open Source</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-body">
+                            <h3 class="project-title">Vibe — Video Social Media App</h3>
+                            <p class="project-summary">Feature-rich video social media application built with Flutter and Firebase. Supports high-performance video pre-caching, real-time updates, comments, likes, user profiles, and scalable feature-based architecture.</p>
+                            
+                            <div class="project-tech-stack">
+                                <span class="tech-chip">Flutter</span>
+                                <span class="tech-chip">Video Player</span>
+                                <span class="tech-chip">Firebase</span>
+                                <span class="tech-chip">Bloc</span>
+                            </div>
+
+                            <div class="project-footer">
+                                <div class="project-actions">
+                                    <a href="https://github.com/OmarShawkey13/vibe" target="_blank" rel="noopener noreferrer" class="project-action-link" title="Open GitHub Repository">
+                                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                                        <span>GitHub</span>
+                                    </a>
+                                </div>
+                                <button class="project-modal-btn" data-open-modal="vibe" aria-label="View Vibe Architecture Details">
+                                    <span>Architecture Deep-Dive</span>
+                                    <span>→</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
                 </div>
             </section>
 
-            <!-- Skills Section -->
-            <section id="skills" class="skills-section">
-                <div class="skills-container">
-                    <h2 class="skills-title animate-on-scroll fade-up">Technical Skills</h2>
-                    <p class="skills-subtitle animate-on-scroll fade-up delay-100">Technologies and tools I use to bring ideas to life.</p>
-                    
-                    <div class="skills-wrap">
-                        <div class="skill-chip">Flutter</div>
-                        <div class="skill-chip">Dart</div>
-                        <div class="skill-chip">Firebase</div>
-                        <div class="skill-chip">Bloc / Cubit</div>
-                        <div class="skill-chip">Clean Architecture</div>
-                        <div class="skill-chip">REST APIs</div>
-                        <div class="skill-chip">Dio</div>
-                        <div class="skill-chip">SQLite</div>
-                        <div class="skill-chip">Dartz</div>
-                        <div class="skill-chip">Responsive UI</div>
-                        <div class="skill-chip">Performance Optimization</div>
-                        <div class="skill-chip">Git &amp; GitHub</div>
-                        <div class="skill-chip">SOLID Principles</div>
-                        <div class="skill-chip">Unit Testing</div>
+            <!-- Technical Skills Ecosystem -->
+            <section id="skills" class="skills-section" aria-label="Technical Skills">
+                <div class="section-header animate-on-scroll fade-up">
+                    <div class="section-tag">
+                        <span class="section-tag-dot"></span>
+                        <span>Tech Stack</span>
+                    </div>
+                    <h2 class="section-title">Technical Skills &amp; Architecture</h2>
+                    <p class="section-subtitle">Core technologies, frameworks, and architectural design patterns I employ to build scalable mobile solutions.</p>
+                </div>
+
+                <div class="skills-categories-grid">
+                    <!-- Cluster 1: Architecture & State -->
+                    <div class="skill-category-card spotlight-card animate-on-scroll fade-up delay-100">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon-box">
+                                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l9 4.9v10.2L12 22l-9-4.9V6.9L12 2zm0 2.2L5 7.6v8.8l7 3.8 7-3.8V7.6L12 4.2zM12 9l5 2.7-5 2.7-5-2.7L12 9z"/></svg>
+                            </div>
+                            <div class="skill-category-info">
+                                <h3 class="skill-category-title">Architecture &amp; State</h3>
+                                <p class="skill-category-desc">Modular, testable, enterprise-scale design</p>
+                            </div>
+                        </div>
+
+                        <div class="skills-chips-wrapper">
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Clean Architecture</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Bloc / Cubit</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Repository Pattern</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>SOLID Principles</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Dependency Injection</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Dartz (FP)</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Cluster 2: Mobile & Core Frameworks -->
+                    <div class="skill-category-card spotlight-card animate-on-scroll fade-up delay-200">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon-box">
+                                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                            </div>
+                            <div class="skill-category-info">
+                                <h3 class="skill-category-title">Mobile &amp; Frameworks</h3>
+                                <p class="skill-category-desc">Native &amp; cross-platform excellence</p>
+                            </div>
+                        </div>
+
+                        <div class="skills-chips-wrapper">
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Flutter</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Dart</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Android (Kotlin / Java)</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Input Method Engine (IME)</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Responsive UI</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Custom Painters</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Cluster 3: Data, Cloud & APIs -->
+                    <div class="skill-category-card spotlight-card animate-on-scroll fade-up delay-100">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon-box">
+                                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>
+                            </div>
+                            <div class="skill-category-info">
+                                <h3 class="skill-category-title">Data &amp; Cloud</h3>
+                                <p class="skill-category-desc">Offline-first sync &amp; scalable networking</p>
+                            </div>
+                        </div>
+
+                        <div class="skills-chips-wrapper">
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Firebase Firestore</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Cloud Messaging (FCM)</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>REST APIs &amp; Dio</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>SQLite Database</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Reactive Streams</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Firebase Auth</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Cluster 4: Performance, Media & Tools -->
+                    <div class="skill-category-card spotlight-card animate-on-scroll fade-up delay-200">
+                        <div class="skill-category-header">
+                            <div class="skill-category-icon-box">
+                                <svg viewBox="0 0 24 24"><path fill="currentColor" d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.05.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.01-4.09l-2.45-1.45C16.27 18.06 14.28 19 12 19z"/></svg>
+                            </div>
+                            <div class="skill-category-info">
+                                <h3 class="skill-category-title">Performance &amp; Systems</h3>
+                                <p class="skill-category-desc">Optimization, testing &amp; background services</p>
+                            </div>
+                        </div>
+
+                        <div class="skills-chips-wrapper">
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Performance Profiling</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Audio Service / Playback</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Unit &amp; Widget Testing</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Git &amp; GitHub</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>Memory Leak Prevention</span></div>
+                            <div class="skill-chip"><span class="skill-chip-dot"></span><span>CI / CD Workflows</span></div>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- About Section -->
-            <section id="about" class="about-section">
-                <div class="about-container">
-                    <h2 class="about-title animate-on-scroll fade-up">About Me</h2>
-                    <p class="about-text animate-on-scroll fade-up delay-100">My journey in programming began during high school in 2022 through Android reverse engineering using Java, where I worked on analyzing applications and dealing with Smali files — the low-level language used internally by Android after compilation. My passion for Java pushed me to dive deeper into Android development and understand how applications and internal systems work from a practical perspective.
+            <section id="about" class="about-section" aria-label="About Omar Shawkey">
+                <div class="section-header animate-on-scroll fade-up">
+                    <div class="section-tag">
+                        <span class="section-tag-dot"></span>
+                        <span>Journey &amp; Philosophy</span>
+                    </div>
+                    <h2 class="section-title">Engineering Story</h2>
+                    <p class="section-subtitle">From reverse engineering Android internals to architecting production cross-platform systems.</p>
+                </div>
 
-Over time, my focus shifted from modifying applications to building scalable and maintainable ones. In 2024, while studying Business Information Systems, I fully transitioned into Flutter development, with a strong focus on Clean Architecture, performance optimization, and building polished production-ready applications.</p>
+                <div class="about-grid">
+                    <!-- Left: Story Narrative -->
+                    <div class="about-story-card spotlight-card animate-on-scroll fade-up delay-100">
+                        <p class="about-lead-text">
+                            My engineering journey began with an insatiable curiosity about how software executes beneath the surface.
+                        </p>
+                        
+                        <p class="about-body-text">
+                            During high school in <strong>2022</strong>, I started in Android reverse engineering using Java—analyzing compiled applications and working directly with <strong>Smali bytecode</strong>, the low-level representation used by the Android runtime. This gave me deep insight into application internals, lifecycle management, and system-level behaviors from a practical perspective.
+                        </p>
+                        
+                        <p class="about-body-text">
+                            Over time, my focus naturally evolved from analyzing existing binaries to architecting resilient, production-ready codebases. In <strong>2024</strong>, while studying Business Information Systems, I made a full commitment to Flutter development—combining low-level system understanding with <strong>Clean Architecture</strong>, reactive streams, and high-performance cross-platform rendering.
+                        </p>
+
+                        <div class="about-highlight-box">
+                            "Clean Architecture is not just a folder structure; it's the guarantee that your business logic remains isolated, testable, and completely independent of external framework changes."
+                        </div>
+                    </div>
+
+                    <!-- Right: Milestone Timeline -->
+                    <div class="about-timeline animate-on-scroll fade-up delay-200">
+                        <!-- Timeline Item 1 -->
+                        <div class="timeline-item">
+                            <div class="timeline-node"></div>
+                            <span class="timeline-year">2022 — The Foundations</span>
+                            <h3 class="timeline-title">Android Low-Level &amp; Reverse Engineering</h3>
+                            <p class="timeline-desc">Dissected Android APKs, analyzed Smali bytecode, explored Java internals, and mastered system-level Android mechanics.</p>
+                        </div>
+
+                        <!-- Timeline Item 2 -->
+                        <div class="timeline-item">
+                            <div class="timeline-node"></div>
+                            <span class="timeline-year">2024 — Scalable Mobile Architectures</span>
+                            <h3 class="timeline-title">Transition to Flutter &amp; Clean Architecture</h3>
+                            <p class="timeline-desc">Specialized in Flutter, Dart, BLoC pattern, functional programming with Dartz, and building multi-layer modular applications.</p>
+                        </div>
+
+                        <!-- Timeline Item 3 -->
+                        <div class="timeline-item">
+                            <div class="timeline-node"></div>
+                            <span class="timeline-year">2025 - 2026 — Production Systems</span>
+                            <h3 class="timeline-title">Native IME &amp; Real-Time Mobile Systems</h3>
+                            <p class="timeline-desc">Built and shipped complex systems including RCKeyBoard (Custom Android IME with SQLite engine), real-time chat, chess engine, and background audio services.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
-        </div>
+            <!-- Contact Section -->
+            <section id="contact" class="contact-section" aria-label="Contact Section">
+                <div class="contact-card spotlight-card animate-on-scroll fade-up">
+                    <div class="contact-info">
+                        <div class="section-tag">
+                            <span class="section-tag-dot"></span>
+                            <span>Let's Connect</span>
+                        </div>
+                        <h2 class="contact-title">Let's build something extraordinary together.</h2>
+                        <p class="contact-desc">
+                            Whether you have an ambitious mobile product to launch, a Flutter role to fill, or need expertise in Clean Architecture—I'd love to talk.
+                        </p>
+                        
+                        <div class="hero-actions" style="margin-top: 12px;">
+                            <button id="copy-email-btn" class="btn btn-primary">
+                                <svg class="btn-icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                                <span>Copy Email Address</span>
+                            </button>
+
+                            <a href="mailto:omar.mohamed.flutter@gmail.com" class="btn btn-outline">
+                                <svg class="btn-icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                <span>Send Direct Email</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contact-channels-grid">
+                        <!-- Email Channel -->
+                        <a href="mailto:omar.mohamed.flutter@gmail.com" class="contact-channel-item">
+                            <div class="contact-channel-left">
+                                <div class="contact-channel-icon">
+                                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                                </div>
+                                <div class="contact-channel-meta">
+                                    <span class="contact-channel-label">Direct Email</span>
+                                    <span class="contact-channel-value">omar.mohamed.flutter@gmail.com</span>
+                                </div>
+                            </div>
+                            <span class="contact-channel-arrow">→</span>
+                        </a>
+
+                        <!-- WhatsApp Channel -->
+                        <a href="https://wa.me/201065067453" target="_blank" rel="noopener noreferrer" class="contact-channel-item">
+                            <div class="contact-channel-left">
+                                <div class="contact-channel-icon">
+                                    <svg viewBox="0 0 24 24"><path fill="#25D366" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.35.06-.53.25-.19.19-.71.7-.71 1.7 0 1.01.73 1.98.84 2.12.1.15 1.44 2.2 3.49 3.08.49.21.87.33 1.17.43.49.16.94.13 1.3.08.4-.06 1.22-.5 1.4-.98.17-.48.17-.89.12-.98-.05-.09-.19-.15-.4-.25s-1.22-.6-1.41-.67c-.19-.07-.33-.11-.47.1-.14.21-.55.67-.67.82-.13.14-.25.16-.46.06s-.89-.33-1.69-1.05c-.63-.56-1.05-1.25-1.17-1.46-.13-.21-.01-.33.09-.43.09-.1.21-.25.32-.37.1-.13.14-.21.21-.35.07-.15.03-.27-.02-.37-.05-.1-.47-1.13-.64-1.55-.17-.41-.34-.36-.47-.36z"/></svg>
+                                </div>
+                                <div class="contact-channel-meta">
+                                    <span class="contact-channel-label">WhatsApp Direct</span>
+                                    <span class="contact-channel-value">+20 106 506 7453</span>
+                                </div>
+                            </div>
+                            <span class="contact-channel-arrow">→</span>
+                        </a>
+
+                        <!-- LinkedIn Channel -->
+                        <a href="https://linkedin.com/in/omarshawkey" target="_blank" rel="noopener noreferrer" class="contact-channel-item">
+                            <div class="contact-channel-left">
+                                <div class="contact-channel-icon">
+                                    <svg viewBox="0 0 24 24"><path fill="#0A66C2" d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2m1.4 9.74v-8.37H5.06v8.37h2.8z"/></svg>
+                                </div>
+                                <div class="contact-channel-meta">
+                                    <span class="contact-channel-label">LinkedIn Profile</span>
+                                    <span class="contact-channel-value">linkedin.com/in/omarshawkey</span>
+                                </div>
+                            </div>
+                            <span class="contact-channel-arrow">→</span>
+                        </a>
+
+                        <!-- GitHub Channel -->
+                        <a href="https://github.com/OmarShawkey13" target="_blank" rel="noopener noreferrer" class="contact-channel-item">
+                            <div class="contact-channel-left">
+                                <div class="contact-channel-icon">
+                                    <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                                </div>
+                                <div class="contact-channel-meta">
+                                    <span class="contact-channel-label">GitHub Repositories</span>
+                                    <span class="contact-channel-value">github.com/OmarShawkey13</span>
+                                </div>
+                            </div>
+                            <span class="contact-channel-arrow">→</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </main>
 
         <!-- Footer -->
-        <footer id="footer" class="footer">
-            <p class="footer-text">© <span id="current-year"></span> Omar Shawkey. All rights reserved.</p>
-            
-            <div class="footer-links">
-                <a href="https://github.com/OmarShawkey13" target="_blank" class="footer-link" title="GitHub">
-                    <img src="assets/images/github.webp" alt="GitHub">
-                </a>
-                <a href="https://linkedin.com/in/omarshawkey" target="_blank" class="footer-link" title="LinkedIn">
-                    <img src="assets/images/linkedin.webp" alt="LinkedIn">
-                </a>
-                <a href="https://wa.me/201065067453" target="_blank" class="footer-link" title="WhatsApp">
-                    <img src="assets/images/whatsapp.webp" alt="WhatsApp">
-                </a>
-                <a href="mailto:omar.mohamed.flutter@gmail.com" target="_blank" class="footer-link" title="Email">
-                    <img src="assets/images/mail.webp" alt="Email">
-                </a>
+        <footer id="footer" class="footer" role="contentinfo">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <span class="footer-brand-title">Omar Shawkey</span>
+                        <span class="footer-brand-sub">Senior Flutter &amp; Mobile Systems Engineer</span>
+                    </div>
+
+                    <div class="footer-social-links" aria-label="Social Media Profiles">
+                        <a href="https://github.com/OmarShawkey13" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="GitHub" aria-label="GitHub">
+                            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                        </a>
+                        <a href="https://linkedin.com/in/omarshawkey" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="LinkedIn" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2m1.4 9.74v-8.37H5.06v8.37h2.8z"/></svg>
+                        </a>
+                        <a href="https://wa.me/201065067453" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="WhatsApp" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.36c0-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.35.06-.53.25-.19.19-.71.7-.71 1.7 0 1.01.73 1.98.84 2.12.1.15 1.44 2.2 3.49 3.08.49.21.87.33 1.17.43.49.16.94.13 1.3.08.4-.06 1.22-.5 1.4-.98.17-.48.17-.89.12-.98-.05-.09-.19-.15-.4-.25s-1.22-.6-1.41-.67c-.19-.07-.33-.11-.47.1-.14.21-.55.67-.67.82-.13.14-.25.16-.46.06s-.89-.33-1.69-1.05c-.63-.56-1.05-1.25-1.17-1.46-.13-.21-.01-.33.09-.43.09-.1.21-.25.32-.37.1-.13.14-.21.21-.35.07-.15.03-.27-.02-.37-.05-.1-.47-1.13-.64-1.55-.17-.41-.34-.36-.47-.36z"/></svg>
+                        </a>
+                        <a href="mailto:omar.mohamed.flutter@gmail.com" class="footer-social-btn" title="Email" aria-label="Email">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p class="footer-copy">© <span id="current-year">2026</span> Omar Shawkey. All rights reserved.</p>
+                    
+                    <button class="back-to-top-btn" id="back-to-top" aria-label="Scroll back to top">
+                        <span>Back to top</span>
+                        <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+                    </button>
+                </div>
             </div>
         </footer>
 
-        <!-- Theme Toggle -->
-        <div class="theme-fab">
-            <button class="theme-toggle">
-                <span>☀️</span>
+        <!-- Floating Theme Switcher FAB -->
+        <div class="theme-fab" id="theme-fab-container">
+            <button class="theme-fab-btn" id="theme-toggle-fab" aria-label="Toggle Theme" title="Toggle Light/Dark Theme">
+                <!-- Injected via js/theme.js -->
             </button>
         </div>
+
+        <!-- Architecture Deep-Dive Modal Overlay -->
+        <div class="project-modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <div class="project-modal-dialog">
+                <button class="modal-close-btn" aria-label="Close Project Details Dialog">
+                    <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+                </button>
+
+                <div class="modal-content-wrapper">
+                    <img src="" alt="" class="modal-header-image">
+                    
+                    <div class="modal-header-info">
+                        <h2 class="modal-title">Project Title</h2>
+                        <p class="modal-subtitle">Project Subtitle</p>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title">
+                            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2l9 4.9v10.2L12 22l-9-4.9V6.9L12 2zm0 2.2L5 7.6v8.8l7 3.8 7-3.8V7.6L12 4.2z"/></svg>
+                            <span>Architectural &amp; Engineering Highlights</span>
+                        </h3>
+                        <ul class="modal-feature-list">
+                            <!-- Injected dynamically -->
+                        </ul>
+                    </div>
+
+                    <div class="modal-section">
+                        <h3 class="modal-section-title">
+                            <svg viewBox="0 0 24 24"><path fill="currentColor" d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                            <span>Technology Stack</span>
+                        </h3>
+                        <div class="project-tech-stack modal-tech-stack">
+                            <!-- Injected dynamically -->
+                        </div>
+                    </div>
+
+                    <div class="modal-actions-bar">
+                        <!-- Injected dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1-Click Copy Toast Notification -->
+        <div class="copy-toast" id="copy-toast" role="status" aria-live="polite">
+            <svg viewBox="0 0 24 24" width="20" height="20"><path fill="#10B981" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <span>Email copied to clipboard! (omar.mohamed.flutter@gmail.com)</span>
+        </div>
     </div>
+
+    <!-- Application JavaScript Engine -->
     <script src="js/animations.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/navigation.js"></script>
+    <script src="js/projects.js"></script>
+    <script src="js/contact.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
