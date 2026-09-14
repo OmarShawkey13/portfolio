@@ -424,6 +424,11 @@ body::before {
 
 .hero-gradient-text {
   background: linear-gradient(120deg, var(--primary) 0%, #a78bfa 72%, var(--accent) 120%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline;
 }
 
 .hero-description {
