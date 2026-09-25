@@ -108,34 +108,43 @@ const PROJECTS_DATA = {
 function initProjectFiltering() {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
+  const filterBar = document.querySelector('.projects-filter-bar');
+  const results = document.getElementById('project-results');
 
-  if (!filterBtns.length || !projectCards.length) return;
+  if (!filterBtns.length || !projectCards.length || !filterBar) return;
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Toggle active button
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-
-      projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          card.style.display = 'flex';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0) scale(1)';
-          }, 10);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(16px) scale(0.96)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 250);
-        }
-      });
+  function activateFilter(button) {
+    const filter = button.dataset.filter || 'all';
+    filterBtns.forEach(tab => {
+      const selected = tab === button;
+      tab.classList.toggle('active', selected);
+      tab.setAttribute('aria-selected', String(selected));
+      tab.tabIndex = selected ? 0 : -1;
     });
+    if (results) results.setAttribute('aria-labelledby', button.id);
+    projectCards.forEach(card => {
+      card.hidden = filter !== 'all' && card.dataset.category !== filter;
+    });
+  }
+
+  filterBtns.forEach(button => {
+    button.addEventListener('click', () => activateFilter(button));
+  });
+
+  filterBar.addEventListener('keydown', event => {
+    const currentIndex = Array.prototype.indexOf.call(filterBtns, document.activeElement);
+    if (currentIndex < 0) return;
+    let nextIndex = currentIndex;
+    if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % filterBtns.length;
+    else if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + filterBtns.length) % filterBtns.length;
+    else if (event.key === 'Home') nextIndex = 0;
+    else if (event.key === 'End') nextIndex = filterBtns.length - 1;
+    else return;
+
+    event.preventDefault();
+    const nextTab = filterBtns[nextIndex];
+    activateFilter(nextTab);
+    nextTab.focus();
   });
 }
 
@@ -150,78 +159,108 @@ function initProjectModal() {
   const modalFeatures = modalBackdrop.querySelector('.modal-feature-list');
   const modalTechStack = modalBackdrop.querySelector('.modal-tech-stack');
   const modalActions = modalBackdrop.querySelector('.modal-actions-bar');
+  const backgroundContent = document.querySelectorAll('.navbar-wrapper, main, .footer, .theme-fab');
+  let previousFocus = null;
+  let previousBodyOverflow = '';
 
-  function openModal(projectId) {
+  function openModal(projectId, trigger) {
     const data = PROJECTS_DATA[projectId];
     if (!data) return;
 
+    previousFocus = trigger || document.activeElement;
+    previousBodyOverflow = document.body.style.overflow;
     modalTitle.textContent = data.title;
     modalSubtitle.textContent = data.subtitle;
     modalImage.src = data.image;
     modalImage.alt = data.title;
 
-    // Tech chips
-    modalTechStack.innerHTML = data.tech.map(t => `<span class="tech-chip">${t}</span>`).join('');
+    modalTechStack.replaceChildren(...data.tech.map(technology => {
+      const chip = document.createElement('span');
+      chip.className = 'tech-chip';
+      chip.textContent = technology;
+      return chip;
+    }));
 
-    // Feature items
-    modalFeatures.innerHTML = data.features.map(f => `
-      <li class="modal-feature-item">
-        <span class="modal-feature-bullet">▸</span>
-        <span>${f}</span>
-      </li>
-    `).join('');
+    modalFeatures.replaceChildren(...data.features.map(feature => {
+      const item = document.createElement('li');
+      const bullet = document.createElement('span');
+      const text = document.createElement('span');
+      item.className = 'modal-feature-item';
+      bullet.className = 'modal-feature-bullet';
+      bullet.setAttribute('aria-hidden', 'true');
+      bullet.textContent = '▸';
+      text.textContent = feature;
+      item.append(bullet, text);
+      return item;
+    }));
 
-    // Action links
-    let actionsHtml = '';
-    if (data.playstore) {
-      actionsHtml += `
-        <a href="${data.playstore}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-          <svg class="btn-icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M3 20.5v-17c0-.83.67-1.5 1.5-1.5c.34 0 .67.12.94.33l13.5 8.5c.67.42.92 1.3.5 1.97c-.12.2-.29.37-.5.5l-13.5 8.5c-.27.21-.6.33-.94.33c-.83 0-1.5-.67-1.5-1.5z"/></svg>
-          <span>Get on Google Play</span>
-        </a>
-      `;
-    }
-    if (data.github) {
-      actionsHtml += `
-        <a href="${data.github}" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-          <svg class="btn-icon-svg" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33c.85 0 1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
-          <span>View Source Code</span>
-        </a>
-      `;
-    }
-    modalActions.innerHTML = actionsHtml;
+    const actionLinks = [];
+    if (data.playstore) actionLinks.push(createActionLink(data.playstore, 'Get on Google Play', 'btn btn-primary'));
+    if (data.github) actionLinks.push(createActionLink(data.github, 'View Source Code', 'btn btn-outline'));
+    modalActions.replaceChildren(...actionLinks);
 
-    modalBackdrop.classList.add('active');
+    modalBackdrop.hidden = false;
+    modalBackdrop.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    backgroundContent.forEach(element => { element.inert = true; });
+    requestAnimationFrame(() => {
+      if (modalBackdrop.hidden) return;
+      modalBackdrop.classList.add('active');
+      closeBtn.focus();
+    });
   }
 
   function closeModal() {
     modalBackdrop.classList.remove('active');
-    document.body.style.overflow = '';
+    modalBackdrop.setAttribute('aria-hidden', 'true');
+    modalBackdrop.hidden = true;
+    document.body.style.overflow = previousBodyOverflow;
+    backgroundContent.forEach(element => { element.inert = false; });
+    if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
   }
 
-  // Click triggers
-  document.querySelectorAll('[data-open-modal]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const projectId = btn.getAttribute('data-open-modal');
-      openModal(projectId);
+  function createActionLink(href, label, className) {
+    const link = document.createElement('a');
+    link.className = className;
+    link.href = href;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = label;
+    return link;
+  }
+
+  document.querySelectorAll('[data-open-modal]').forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      openModal(button.dataset.openModal, button);
     });
   });
 
-  if (closeBtn) {
-    closeBtn.addEventListener('click', closeModal);
-  }
-
-  modalBackdrop.addEventListener('click', (e) => {
-    if (e.target === modalBackdrop) {
-      closeModal();
-    }
+  closeBtn.addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', event => {
+    if (event.target === modalBackdrop) closeModal();
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
+  document.addEventListener('keydown', event => {
+    if (!modalBackdrop.classList.contains('active')) return;
+    if (event.key === 'Escape') {
       closeModal();
+      return;
+    }
+    if (event.key !== 'Tab') return;
+
+    const focusable = modalBackdrop.querySelectorAll('a[href], button:not([disabled])');
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (!first || !last) {
+      event.preventDefault();
+      closeBtn.focus();
+    } else if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
     }
   });
 }

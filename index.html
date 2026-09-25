@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#07111f">
+    <meta name="color-scheme" content="dark light">
     
     <!-- SEO Meta Tags -->
     <title>Omar Shawkey — Senior Flutter & Mobile Systems Engineer</title>
@@ -17,25 +18,39 @@
     <meta property="og:image" content="assets/images/profile.webp">
     <meta property="og:type" content="website">
     
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : (prefersDark ? 'dark' : 'light');
+            document.documentElement.dataset.theme = theme;
+            document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#07111f' : '#f5f9fc';
+        } catch {
+            document.documentElement.dataset.theme = 'dark';
+        }
+    </script>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
-    <!-- Google Fonts Preconnect -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="css/main.css">
+    <!-- Local stylesheets are discovered in parallel; the font stack stays system-native. -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components/navbar.css">
+    <link rel="stylesheet" href="css/components/hero.css">
+    <link rel="stylesheet" href="css/components/projects.css">
+    <link rel="stylesheet" href="css/components/project-modal.css">
+    <link rel="stylesheet" href="css/components/skills.css">
+    <link rel="stylesheet" href="css/components/about.css">
+    <link rel="stylesheet" href="css/components/contact.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/theme.css">
+    <link rel="stylesheet" href="css/design.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <!-- Scroll Progress Indicator -->
     <div class="scroll-progress-bar" id="scroll-progress" aria-hidden="true"></div>
-
-    <!-- Ambient Background Lighting Orbs -->
-    <div class="bg-ambient-light" aria-hidden="true">
-        <div class="ambient-orb ambient-orb-1"></div>
-        <div class="ambient-orb ambient-orb-2"></div>
-        <div class="ambient-orb ambient-orb-3"></div>
-    </div>
 
     <div class="app-root">
         <!-- Floating Glass Navigation -->
@@ -49,7 +64,7 @@
                     </a>
                     
                     <ul class="nav-items" id="nav-menu">
-                        <li><a href="#home" class="nav-link active">Home</a></li>
+                        <li><a href="#home" class="nav-link active" aria-current="location">Home</a></li>
                         <li><a href="#projects" class="nav-link">Projects</a></li>
                         <li><a href="#skills" class="nav-link">Skills</a></li>
                         <li><a href="#about" class="nav-link">About</a></li>
@@ -76,7 +91,7 @@
             </nav>
         </header>
 
-        <main class="app-content">
+        <main class="app-content" id="main-content">
             <!-- Hero Section -->
             <section id="home" class="hero-section" aria-label="Hero Section">
                 <div class="hero-content">
@@ -114,8 +129,8 @@
                     
                     <div class="hero-stats animate-on-scroll fade-up delay-400">
                         <div class="hero-stat-item">
-                            <div class="hero-stat-number" data-target="2">
-                                <span class="counter-value">0</span><span class="hero-stat-plus">+</span>
+                            <div class="hero-stat-number">
+                                <span>2</span><span class="hero-stat-plus">+</span>
                             </div>
                             <span class="hero-stat-label">Years Experience</span>
                         </div>
@@ -123,8 +138,8 @@
                         <div class="hero-stat-divider" aria-hidden="true"></div>
                         
                         <div class="hero-stat-item">
-                            <div class="hero-stat-number" data-target="7">
-                                <span class="counter-value">0</span><span class="hero-stat-plus">+</span>
+                            <div class="hero-stat-number">
+                                <span>7</span><span class="hero-stat-plus">+</span>
                             </div>
                             <span class="hero-stat-label">Production Projects</span>
                         </div>
@@ -132,8 +147,8 @@
                         <div class="hero-stat-divider" aria-hidden="true"></div>
                         
                         <div class="hero-stat-item">
-                            <div class="hero-stat-number" data-target="100">
-                                <span class="counter-value">0</span><span class="hero-stat-plus">%</span>
+                            <div class="hero-stat-number">
+                                <span>100</span><span class="hero-stat-plus">%</span>
                             </div>
                             <span class="hero-stat-label">Clean Architecture</span>
                         </div>
@@ -146,7 +161,7 @@
                         <div class="hero-card-glow" aria-hidden="true"></div>
                         
                         <div class="hero-avatar-frame">
-                            <img src="assets/images/profile.webp" alt="Omar Shawkey - Flutter Engineer" class="hero-avatar-img" width="340" height="340" loading="eager">
+                            <img src="assets/images/profile.webp" alt="Omar Shawkey - Flutter Engineer" class="hero-avatar-img" width="340" height="340" loading="eager" fetchpriority="high" decoding="async">
                         </div>
 
                         <!-- Interactive Floating Badges -->
@@ -180,31 +195,31 @@
                 </div>
 
                 <!-- Category Filters -->
-                <div class="projects-filter-bar animate-on-scroll fade-up delay-100" role="tablist" aria-label="Project Filter Tabs">
-                    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+                <div class="projects-filter-bar animate-on-scroll fade-up delay-100" role="tablist" aria-label="Project categories" aria-orientation="horizontal">
+                    <button class="filter-btn active" id="filter-all" data-filter="all" role="tab" aria-controls="project-results" aria-selected="true" tabindex="0">
                         <span>All Work</span>
                         <span class="filter-count">7</span>
                     </button>
-                    <button class="filter-btn" data-filter="mobile" role="tab" aria-selected="false">
+                    <button class="filter-btn" id="filter-mobile" data-filter="mobile" role="tab" aria-controls="project-results" aria-selected="false" tabindex="-1">
                         <span>Mobile Apps</span>
                         <span class="filter-count">4</span>
                     </button>
-                    <button class="filter-btn" data-filter="native" role="tab" aria-selected="false">
+                    <button class="filter-btn" id="filter-native" data-filter="native" role="tab" aria-controls="project-results" aria-selected="false" tabindex="-1">
                         <span>Systems &amp; IME</span>
                         <span class="filter-count">1</span>
                     </button>
-                    <button class="filter-btn" data-filter="media" role="tab" aria-selected="false">
+                    <button class="filter-btn" id="filter-media" data-filter="media" role="tab" aria-controls="project-results" aria-selected="false" tabindex="-1">
                         <span>Audio &amp; Media</span>
                         <span class="filter-count">2</span>
                     </button>
                 </div>
 
                 <!-- Projects Grid -->
-                <div class="projects-grid">
+                <div class="projects-grid" id="project-results" role="tabpanel" aria-labelledby="filter-all" tabindex="0">
                     <!-- Project 1: RCKeyBoard -->
                     <article class="project-card spotlight-card animate-on-scroll fade-up delay-100" data-category="native">
                         <div class="project-image-container">
-                            <img src="assets/images/rckeyboard.webp" alt="RCKeyBoard Android Keyboard Preview" class="project-image" loading="lazy">
+                            <img src="assets/images/rckeyboard.webp" alt="RCKeyBoard Android keyboard preview" class="project-image" width="1376" height="768" loading="lazy" decoding="async">
                             <div class="project-image-overlay"></div>
                             <div class="project-image-badges">
                                 <span class="project-badge badge-playstore">Google Play</span>
@@ -241,7 +256,7 @@
                     <!-- Project 2: Piko -->
                     <article class="project-card spotlight-card animate-on-scroll fade-up delay-200" data-category="mobile">
                         <div class="project-image-container">
-                            <img src="assets/images/piko.webp" alt="Piko Chat App Preview" class="project-image" loading="lazy">
+                            <img src="assets/images/piko.webp" alt="Piko chat app preview" class="project-image" width="1376" height="768" loading="lazy" decoding="async">
                             <div class="project-image-overlay"></div>
                             <div class="project-image-badges">
                                 <span class="project-badge badge-opensource">Open Source</span>
@@ -277,7 +292,7 @@
                     <!-- Project 3: Checkmate Elite -->
                     <article class="project-card spotlight-card animate-on-scroll fade-up delay-100" data-category="mobile">
                         <div class="project-image-container">
-                            <img src="assets/images/checkmate-elite.webp" alt="Checkmate Elite Chess App Preview" class="project-image" loading="lazy">
+                            <img src="assets/images/checkmate-elite.webp" alt="Checkmate Elite chess app preview" class="project-image" width="1600" height="893" loading="lazy" decoding="async">
                             <div class="project-image-overlay"></div>
                             <div class="project-image-badges">
                                 <span class="project-badge badge-opensource">Open Source</span>
@@ -313,7 +328,7 @@
                     <!-- Project 4: Ripple -->
                     <article class="project-card spotlight-card animate-on-scroll fade-up delay-200" data-category="mobile">
                         <div class="project-image-container">
-                            <img src="assets/images/ripple.webp" alt="Ripple Social Media App Preview" class="project-image" loading="lazy">
+                            <img src="assets/images/ripple.webp" alt="Ripple social media app preview" class="project-image" width="1600" height="893" loading="lazy" decoding="async">
                             <div class="project-image-overlay"></div>
                             <div class="project-image-badges">
                                 <span class="project-badge badge-opensource">Open Source</span>
@@ -349,7 +364,7 @@
                     <!-- Project 5: Wallix -->
                     <article class="project-card spotlight-card animate-on-scroll fade-up delay-100" data-category="media">
                         <div class="project-image-container">
-                            <img src="assets/images/wallix.webp" alt="Wallix Wallpaper App Preview" class="project-image" loading="lazy">
+                            <img src="assets/images/wallix.webp" alt="Wallix wallpaper app preview" class="project-image" width="1376" height="768" loading="lazy" decoding="async">
                             <div class="project-image-overlay"></div>
                             <div class="project-image-badges">
                                 <span class="project-badge badge-opensource">Open Source</span>
@@ -385,7 +400,7 @@
                     <!-- Project 6: Pulse -->
                     <article class="project-card spotlight-card animate-on-scroll fade-up delay-200" data-category="media">
                         <div class="project-image-container">
-                            <img src="assets/images/pulse.webp" alt="Pulse Music Player Preview" class="project-image" loading="lazy">
+                            <img src="assets/images/pulse.webp" alt="Pulse music player preview" class="project-image" width="1536" height="1024" loading="lazy" decoding="async">
                             <div class="project-image-overlay"></div>
                             <div class="project-image-badges">
                                 <span class="project-badge badge-opensource">Open Source</span>
@@ -421,7 +436,7 @@
                     <!-- Project 7: Vibe -->
                     <article class="project-card spotlight-card animate-on-scroll fade-up delay-100" data-category="mobile">
                         <div class="project-image-container">
-                            <img src="assets/images/vibe.webp" alt="Vibe Video Social App Preview" class="project-image" loading="lazy">
+                            <img src="assets/images/vibe.webp" alt="Vibe short-form video app preview" class="project-image" width="1262" height="1600" loading="lazy" decoding="async">
                             <div class="project-image-overlay"></div>
                             <div class="project-image-badges">
                                 <span class="project-badge badge-opensource">Open Source</span>
@@ -749,18 +764,18 @@
         </div>
 
         <!-- Architecture Deep-Dive Modal Overlay -->
-        <div class="project-modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="project-modal-backdrop" id="project-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-subtitle" hidden>
             <div class="project-modal-dialog">
                 <button class="modal-close-btn" aria-label="Close Project Details Dialog">
                     <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
                 </button>
 
                 <div class="modal-content-wrapper">
-                    <img src="" alt="" class="modal-header-image">
+                    <img alt="" class="modal-header-image" width="840" height="473" decoding="async">
                     
                     <div class="modal-header-info">
-                        <h2 class="modal-title">Project Title</h2>
-                        <p class="modal-subtitle">Project Subtitle</p>
+                        <h2 class="modal-title" id="modal-title">Project Title</h2>
+                        <p class="modal-subtitle" id="modal-subtitle">Project Subtitle</p>
                     </div>
 
                     <div class="modal-section">
@@ -798,11 +813,11 @@
     </div>
 
     <!-- Application JavaScript Engine -->
-    <script src="js/animations.js"></script>
-    <script src="js/theme.js"></script>
-    <script src="js/navigation.js"></script>
-    <script src="js/projects.js"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/main.js"></script>
+    <script src="js/animations.js" defer></script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/projects.js" defer></script>
+    <script src="js/contact.js" defer></script>
+    <script src="js/main.js" defer></script>
 </body>
 </html>

@@ -1,139 +1,57 @@
-/**
- * 2026 Advanced Animation Engine
- * Scroll Reveal, Number Count-Up, 3D Card Tilt, and Mouse Spotlight
- */
-
 function initScrollAnimations() {
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px 0px -50px 0px',
-    threshold: 0.12
-  };
+  const elements = document.querySelectorAll('.animate-on-scroll');
+  const prefersReducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  if (!elements.length || prefersReducedMotion || !('IntersectionObserver' in window)) return;
 
-  const observer = new IntersectionObserver((entries, obs) => {
+  document.documentElement.dataset.scrollReveal = 'ready';
+  const observer = new IntersectionObserver((entries, currentObserver) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        obs.unobserve(entry.target);
-      }
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-visible');
+      currentObserver.unobserve(entry.target);
     });
-  }, observerOptions);
-
-  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
-}
-
-// Animated Stat Counters
-function initCounterAnimations() {
-  const statNumbers = document.querySelectorAll('.hero-stat-number[data-target]');
-  if (!statNumbers.length) return;
-
-  const counterObserver = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.getAttribute('data-target'), 10);
-        const duration = 1600; // ms
-        const startTime = performance.now();
-
-        function updateCounter(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          // Ease-out cubic
-          const easeOut = 1 - Math.pow(1 - progress, 3);
-          const currentVal = Math.floor(easeOut * target);
-
-          const valueSpan = el.querySelector('.counter-value');
-          if (valueSpan) {
-            valueSpan.textContent = currentVal;
-          }
-
-          if (progress < 1) {
-            requestAnimationFrame(updateCounter);
-          } else if (valueSpan) {
-            valueSpan.textContent = target;
-          }
-        }
-
-        requestAnimationFrame(updateCounter);
-        obs.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  statNumbers.forEach(num => counterObserver.observe(num));
-}
-
-// 3D Card Tilt & Mouse Glare
-function init3DTilt() {
-  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  if (isTouchDevice) return; // Skip heavy tilt physics on touch devices
-
-  const tiltCards = document.querySelectorAll('.tilt-effect, .project-card');
-
-  tiltCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      const rotateX = ((y - centerY) / centerY) * -7;
-      const rotateY = ((x - centerX) / centerX) * 7;
-
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-
-      // Set CSS variables for spotlight effect
-      card.style.setProperty('--mouse-x', `${x}px`);
-      card.style.setProperty('--mouse-y', `${y}px`);
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
-    });
+  }, {
+    rootMargin: '0px 0px -32px 0px',
+    threshold: 0.08
   });
 
-  // Hero Card Tilt
-  const heroCard = document.querySelector('.hero-card-wrapper');
-  if (heroCard) {
-    window.addEventListener('mousemove', (e) => {
-      const { innerWidth, innerHeight } = window;
-      const xRatio = (e.clientX / innerWidth - 0.5) * 2;
-      const yRatio = (e.clientY / innerHeight - 0.5) * 2;
-
-      heroCard.style.transform = `perspective(1000px) rotateY(${xRatio * 10}deg) rotateX(${-yRatio * 10}deg)`;
-    });
-  }
+  elements.forEach(element => observer.observe(element));
 }
 
-// Scroll Progress & Navbar Shrink
 function initScrollEffects() {
-  const progressBar = document.querySelector('.scroll-progress-bar');
+  const progressBar = document.getElementById('scroll-progress');
   const navbarWrapper = document.querySelector('.navbar-wrapper');
+  let framePending = false;
+  let isScrolled = null;
 
-  window.addEventListener('scroll', () => {
+  function update() {
+    framePending = false;
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercentage = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = scrollHeight > 0 ? Math.min(scrollTop / scrollHeight, 1) : 0;
 
-    if (progressBar) {
-      progressBar.style.width = `${scrollPercentage}%`;
-    }
-
+    if (progressBar) progressBar.style.transform = `scaleX(${progress})`;
     if (navbarWrapper) {
-      if (scrollTop > 40) {
-        navbarWrapper.classList.add('scrolled');
-      } else {
-        navbarWrapper.classList.remove('scrolled');
+      const nextScrolled = scrollTop > 40;
+      if (nextScrolled !== isScrolled) {
+        navbarWrapper.classList.toggle('scrolled', nextScrolled);
+        isScrolled = nextScrolled;
       }
     }
-  }, { passive: true });
+  }
+
+  function scheduleUpdate() {
+    if (framePending) return;
+    framePending = true;
+    window.requestAnimationFrame(update);
+  }
+
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate, { passive: true });
+  scheduleUpdate();
 }
 
 function initAnimations() {
   initScrollAnimations();
-  initCounterAnimations();
-  init3DTilt();
   initScrollEffects();
 }
