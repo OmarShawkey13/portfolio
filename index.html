@@ -1,25 +1,31 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f7f7f2">
-  <meta name="description" content="Omar Shawkey is a Flutter & Android Engineer in Cairo building scalable mobile apps, real-time systems, published packages, and native Android tools.">
+  <meta name="description"
+    content="Omar Shawkey is a Flutter & Android Engineer in Cairo building scalable mobile apps, real-time systems, published packages, and native Android tools.">
   <meta property="og:title" content="Omar Shawkey — Flutter & Mobile Engineer">
-  <meta property="og:description" content="Scalable mobile apps, real-time products, and native Android tools built with Clean Architecture and precision.">
+  <meta property="og:description"
+    content="Scalable mobile apps, real-time products, and native Android tools built with Clean Architecture and precision.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/images/profile.webp">
   <title>Omar Shawkey — Flutter & Mobile Engineer</title>
   <link rel="icon" href="favicon.ico">
-  
+
   <!-- Preconnect & Google Fonts for exact typography rendering -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap"
+    rel="stylesheet">
+
   <link rel="stylesheet" href="css/site.css">
   <script src="js/site.js" defer></script>
 </head>
+
 <body>
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -30,7 +36,8 @@
         <span class="brand-mark">OS<span class="brand-dot">.</span></span>
         <span class="brand-name">Omar Shawkey</span>
       </a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav"
+        aria-label="Open navigation">
         <span></span><span></span><span></span>
       </button>
       <nav id="site-nav" class="site-nav" aria-label="Main navigation">
@@ -52,7 +59,8 @@
         <p class="eyebrow"><span class="eyebrow-line"></span> Flutter &amp; Android Engineer · Cairo, Egypt</p>
         <h1 id="hero-title">I engineer mobile apps that <em>feel effortless.</em></h1>
         <p class="hero-intro">
-          I'm Omar, a mobile software engineer turning complex requirements into scalable, high-performance experiences. I specialize in Flutter, Clean Architecture, real-time systems, and deep native Android integrations.
+          I'm Omar, a mobile software engineer turning complex requirements into scalable, high-performance experiences.
+          I specialize in Flutter, Clean Architecture, real-time systems, and deep native Android integrations.
         </p>
         <div class="hero-actions">
           <a class="button button-primary" href="#work">
@@ -65,12 +73,12 @@
         </div>
         <div class="hero-proof" aria-label="Engineering Highlights">
           <div class="proof-item">
-            <strong>2024</strong>
-            <span>Production &amp; Freelance</span>
+            <strong>500K+</strong>
+            <span>Google Play Downloads</span>
           </div>
           <div class="proof-item">
-            <strong>Google Play</strong>
-            <span>2 Published Apps</span>
+            <strong>2+ Years</strong>
+            <span>Production &amp; Freelance</span>
           </div>
           <div class="proof-item">
             <strong>pub.dev</strong>
@@ -81,7 +89,8 @@
 
       <div class="hero-portrait reveal">
         <div class="portrait-frame">
-          <img src="assets/images/profile.webp" alt="Portrait of Omar Shawkey" width="896" height="999" fetchpriority="high" decoding="async">
+          <img src="assets/images/profile.webp" alt="Portrait of Omar Shawkey" width="896" height="999"
+            fetchpriority="high" decoding="async">
         </div>
         <div class="portrait-note">
           <span class="status-dot"></span>
@@ -102,117 +111,109 @@
         </div>
 
         <div class="project-grid">
-          <!-- 01: PIKO (FEATURED) -->
+          <!-- 01: RCKEYBOARD (FEATURED) -->
           <article class="project-card project-featured reveal">
-            <div class="project-media media-piko">
-              <span class="media-badge">Featured Architecture</span>
-              <img src="assets/images/piko.webp" alt="Piko real-time chat application preview" width="1376" height="768" loading="lazy" decoding="async">
+            <div class="project-media media-keyboard">
+              <span class="media-badge badge-live"><span class="live-dot"></span> Live on Google Play</span>
+              <img src="assets/images/rckeyboard.webp" alt="RCKeyboard Android keyboard preview" width="1376"
+                height="768" loading="lazy" decoding="async">
             </div>
             <div class="project-content">
               <div class="project-topline">
                 <span class="project-number">01 / Featured</span>
-                <span class="project-type">Real-Time Messaging</span>
-              </div>
-              <h3>Piko</h3>
-              <p>A production-grade real-time messaging platform engineered with Flutter, Firebase, and BLoC/Cubit. Designed for instant message delivery, live typing indicators, presence tracking, and media sharing without UI frame drops.</p>
-              
-              <details class="project-specs">
-                <summary>Technical Architecture &amp; Highlights</summary>
-                <ul>
-                  <li><strong>Architecture:</strong> Feature-first Clean Architecture separating domain logic from Firestore streams.</li>
-                  <li><strong>State &amp; Sync:</strong> Reactive Cubit streams managing real-time online/offline presence, read receipts, and optimistic UI updates.</li>
-                  <li><strong>Notifications:</strong> Background &amp; foreground push notification routing via Firebase Cloud Messaging (FCM).</li>
-                </ul>
-              </details>
-
-              <div class="tags">
-                <span>Flutter</span><span>Dart</span><span>BLoC / Cubit</span><span>Firestore</span><span>FCM</span><span>Clean Architecture</span>
-              </div>
-              <div class="project-links">
-                <a class="project-link" href="https://github.com/OmarShawkey13/piko" target="_blank" rel="noopener noreferrer">
-                  Explore Source on GitHub <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- 02: RCKEYBOARD (FEATURED) -->
-          <article class="project-card project-featured reveal">
-            <div class="project-media media-keyboard">
-              <span class="media-badge badge-live"><span class="live-dot"></span> Live on Google Play</span>
-              <img src="assets/images/rckeyboard.webp" alt="RCKeyboard Android keyboard preview" width="1376" height="768" loading="lazy" decoding="async">
-            </div>
-            <div class="project-content">
-              <div class="project-topline">
-                <span class="project-number">02 / Featured</span>
                 <span class="project-type">Native Android System IME</span>
               </div>
               <h3>RCKeyboard</h3>
-              <p>A high-performance multilingual Android keyboard built natively with Kotlin and Android's InputMethodService. Combines smooth iOS-inspired aesthetics, local SQLite word prediction, clipboard manager, and deep theme customization.</p>
+              <p>A high-performance multilingual Android keyboard built natively with Kotlin and Android's
+                InputMethodService. Combines smooth iOS-inspired aesthetics, local SQLite word prediction, clipboard
+                manager, and deep theme customization.</p>
               <div class="project-metric"><strong>500K+</strong><span>Downloads</span></div>
-              
+
               <details class="project-specs">
                 <summary>Technical Architecture &amp; Highlights</summary>
                 <ul>
-                  <li><strong>Low-Latency Rendering:</strong> Custom Canvas/View rendering optimized for zero input lag and strict memory limits required by system keyboards.</li>
-                  <li><strong>On-Device Processing:</strong> Fast SQLite queries for multilingual dictionary lookups, auto-correction, and smart suggestions completely offline.</li>
-                  <li><strong>Customization Engine:</strong> Dynamic theming, key-press haptics/audio feedback, and integrated clipboard history.</li>
+                  <li><strong>Low-Latency Rendering:</strong> Custom Canvas/View rendering optimized for zero input lag
+                    and strict memory limits required by system keyboards.</li>
+                  <li><strong>On-Device Processing:</strong> Fast SQLite queries for multilingual dictionary lookups,
+                    auto-correction, and smart suggestions completely offline.</li>
+                  <li><strong>Customization Engine:</strong> Dynamic theming, key-press haptics/audio feedback, and
+                    integrated clipboard history.</li>
                 </ul>
               </details>
 
               <div class="tags">
-                <span>Kotlin</span><span>Android IME</span><span>SQLite</span><span>Custom Views</span><span>On-Device NLP</span>
+                <span>Kotlin</span><span>Java</span><span>Android IME</span><span>SQLite</span><span>Custom
+                  Views</span><span>On-Device NLP</span>
               </div>
               <div class="project-links">
-                <a class="project-link link-primary" href="https://play.google.com/store/apps/details?id=rc.keyboard" target="_blank" rel="noopener noreferrer">
+                <a class="project-link link-primary" href="https://play.google.com/store/apps/details?id=rc.keyboard"
+                  target="_blank" rel="noopener noreferrer">
                   Get it on Google Play <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </div>
           </article>
 
-          <!-- 03: CHECKMATE ELITE -->
-          <article class="project-card reveal">
-            <div class="project-media media-chess">
-              <img src="assets/images/checkmate-elite.webp" alt="Checkmate Elite chess app preview" width="1600" height="893" loading="lazy" decoding="async">
+          <!-- 02: PIKO (FEATURED) -->
+          <article class="project-card project-featured reveal">
+            <div class="project-media media-piko">
+              <span class="media-badge">Featured Architecture</span>
+              <img src="assets/images/piko.webp" alt="Piko real-time chat application preview" width="1376" height="768"
+                loading="lazy" decoding="async">
             </div>
             <div class="project-content">
               <div class="project-topline">
-                <span class="project-number">03</span>
-                <span class="project-type">Interactive Strategy Game</span>
+                <span class="project-number">02 / Featured</span>
+                <span class="project-type">Real-Time Messaging</span>
               </div>
-              <h3>Checkmate Elite</h3>
-              <p>A modern chess experience featuring deterministic BLoC state management, legal move validation, custom board animations, and responsive layouts.</p>
-              
+              <h3>Piko</h3>
+              <p>A production-grade real-time messaging platform engineered with Flutter, Firebase, and BLoC/Cubit.
+                Designed for instant message delivery, live typing indicators, presence tracking, and media sharing
+                without UI frame drops.</p>
+
               <details class="project-specs">
-                <summary>Technical Breakdown</summary>
+                <summary>Technical Architecture &amp; Highlights</summary>
                 <ul>
-                  <li>Isolated rule validation engine for check, checkmate, castling, and en passant.</li>
-                  <li>60fps piece transitions with modular, reusable board widgets.</li>
+                  <li><strong>Architecture:</strong> Feature-first Clean Architecture separating domain logic from
+                    Firestore streams.</li>
+                  <li><strong>State &amp; Sync:</strong> Reactive Cubit streams managing real-time online/offline
+                    presence, read receipts, and optimistic UI updates.</li>
+                  <li><strong>Notifications:</strong> Background &amp; foreground push notification routing via Firebase
+                    Cloud Messaging (FCM).</li>
                 </ul>
               </details>
 
-              <div class="tags"><span>Flutter</span><span>BLoC</span><span>Clean Architecture</span><span>Animations</span></div>
+              <div class="tags">
+                <span>Flutter</span><span>Dart</span><span>BLoC /
+                  Cubit</span><span>Firestore</span><span>FCM</span><span>Cloudinary</span><span>Clean
+                  Architecture</span>
+              </div>
               <div class="project-links">
-                <a class="project-link" href="https://github.com/OmarShawkey13/Checkmate-Elite" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+                <a class="project-link" href="https://github.com/OmarShawkey13/piko" target="_blank"
+                  rel="noopener noreferrer">
+                  Explore Source on GitHub <span aria-hidden="true">↗</span>
+                </a>
               </div>
             </div>
           </article>
 
-          <!-- 04: WALLUNE -->
+          <!-- 03: WALLUNE -->
           <article class="project-card reveal">
             <div class="project-media">
               <span class="media-badge badge-live"><span class="live-dot"></span> Google Play</span>
-              <img src="assets/images/wallune.webp" alt="Wallune wallpaper app preview" width="1024" height="512" loading="lazy" decoding="async">
+              <img src="assets/images/wallune.webp" alt="Wallune wallpaper app preview" width="1024" height="512"
+                loading="lazy" decoding="async">
             </div>
             <div class="project-content">
               <div class="project-topline">
-                <span class="project-number">04</span>
+                <span class="project-number">03</span>
                 <span class="project-type">Published Flutter App</span>
               </div>
               <h3>Wallune</h3>
-              <p>A curated wallpaper platform with category filtering, instant search, and offline favorites powered by SQLite and a lightweight GitHub-hosted JSON API.</p>
-              
+              <p>A curated wallpaper platform with category filtering, instant search, and offline favorites powered by
+                SQLite and a lightweight GitHub-hosted JSON API.</p>
+              <div class="project-metric"><strong>1K+</strong><span>Downloads</span></div>
+
               <details class="project-specs">
                 <summary>Technical Breakdown</summary>
                 <ul>
@@ -221,14 +222,17 @@
                 </ul>
               </details>
 
-              <div class="tags"><span>Flutter</span><span>REST APIs</span><span>SQLite</span><span>Caching</span></div>
+              <div class="tags">
+                <span>Flutter</span><span>REST APIs</span><span>SQLite</span><span>Custom Caching</span>
+              </div>
               <div class="project-links">
-                <a class="project-link link-primary" href="https://play.google.com/store/apps/details?id=com.wallune" target="_blank" rel="noopener noreferrer">View on Google Play <span aria-hidden="true">↗</span></a>
+                <a class="project-link link-primary" href="https://play.google.com/store/apps/details?id=com.wallune"
+                  target="_blank" rel="noopener noreferrer">View on Google Play <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
 
-          <!-- 05: CONTEXT_MENU_ANDROID -->
+          <!-- 04: CONTEXT_MENU_ANDROID -->
           <article class="project-card reveal">
             <div class="project-media media-package">
               <span class="media-badge badge-pub">pub.dev Package</span>
@@ -243,23 +247,58 @@
             </div>
             <div class="project-content">
               <div class="project-topline">
-                <span class="project-number">05</span>
+                <span class="project-number">04</span>
                 <span class="project-type">Open-Source Library</span>
               </div>
               <h3>context_menu_android</h3>
-              <p>A published Dart/Flutter package bringing fluid, iOS-inspired context menus to Android with backdrop blur, scale animations, and nested submenus.</p>
-              
+              <p>A published Dart/Flutter package bringing fluid, iOS-inspired context menus to Android with backdrop
+                blur, scale animations, and nested submenus.</p>
+
               <details class="project-specs">
                 <summary>Technical Breakdown</summary>
                 <ul>
-                  <li>Built with Flutter OverlayPortal &amp; custom route transitions for zero-boilerplate integration.</li>
+                  <li>Built with Flutter OverlayPortal &amp; custom route transitions for zero-boilerplate integration.
+                  </li>
                   <li>Supports haptic feedback, screen-edge collision detection, and nested hierarchies.</li>
                 </ul>
               </details>
 
               <div class="tags"><span>Flutter</span><span>Dart</span><span>pub.dev</span><span>UI Package</span></div>
               <div class="project-links">
-                <a class="project-link link-primary" href="https://pub.dev/packages/context_menu_android" target="_blank" rel="noopener noreferrer">View on pub.dev <span aria-hidden="true">↗</span></a>
+                <a class="project-link link-primary" href="https://pub.dev/packages/context_menu_android"
+                  target="_blank" rel="noopener noreferrer">View on pub.dev <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 05: CHECKMATE ELITE -->
+          <article class="project-card reveal">
+            <div class="project-media media-chess">
+              <img src="assets/images/checkmate-elite.webp" alt="Checkmate Elite chess app preview" width="1600"
+                height="893" loading="lazy" decoding="async">
+            </div>
+            <div class="project-content">
+              <div class="project-topline">
+                <span class="project-number">05</span>
+                <span class="project-type">Interactive Strategy Game</span>
+              </div>
+              <h3>Checkmate Elite</h3>
+              <p>A modern chess experience featuring deterministic BLoC state management, legal move validation, custom
+                board animations, and responsive layouts.</p>
+
+              <details class="project-specs">
+                <summary>Technical Breakdown</summary>
+                <ul>
+                  <li>Isolated rule validation engine for check, checkmate, castling, and en passant.</li>
+                  <li>60fps piece transitions with modular, reusable board widgets.</li>
+                </ul>
+              </details>
+
+              <div class="tags"><span>Flutter</span><span>BLoC</span><span>Clean
+                  Architecture</span><span>Animations</span></div>
+              <div class="project-links">
+                <a class="project-link" href="https://github.com/OmarShawkey13/Checkmate-Elite" target="_blank"
+                  rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
@@ -267,7 +306,8 @@
           <!-- 06: WALLIX -->
           <article class="project-card reveal">
             <div class="project-media media-wallix">
-              <img src="assets/images/wallix.webp" alt="Wallix wallpaper app preview" width="1376" height="768" loading="lazy" decoding="async">
+              <img src="assets/images/wallix.webp" alt="Wallix wallpaper app preview" width="1376" height="768"
+                loading="lazy" decoding="async">
             </div>
             <div class="project-content">
               <div class="project-topline">
@@ -275,8 +315,9 @@
                 <span class="project-type">Media &amp; Personalization</span>
               </div>
               <h3>Wallix</h3>
-              <p>A sleek visual discovery app featuring staggered masonry grids, smooth hero transitions, one-tap wallpaper application, and local collections.</p>
-              
+              <p>A sleek visual discovery app featuring staggered masonry grids, smooth hero transitions, one-tap
+                wallpaper application, and local collections.</p>
+
               <details class="project-specs">
                 <summary>Technical Breakdown</summary>
                 <ul>
@@ -287,7 +328,8 @@
 
               <div class="tags"><span>Flutter</span><span>Dio</span><span>Cubit</span><span>Custom UI</span></div>
               <div class="project-links">
-                <a class="project-link" href="https://github.com/OmarShawkey13/wallix" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+                <a class="project-link" href="https://github.com/OmarShawkey13/wallix" target="_blank"
+                  rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
@@ -295,7 +337,8 @@
           <!-- 07: RIPPLE -->
           <article class="project-card reveal">
             <div class="project-media media-ripple">
-              <img src="assets/images/ripple.webp" alt="Ripple social media app preview" width="1600" height="893" loading="lazy" decoding="async">
+              <img src="assets/images/ripple.webp" alt="Ripple social media app preview" width="1600" height="893"
+                loading="lazy" decoding="async">
             </div>
             <div class="project-content">
               <div class="project-topline">
@@ -303,8 +346,9 @@
                 <span class="project-type">Social Platform</span>
               </div>
               <h3>Ripple</h3>
-              <p>A modular social network built with Flutter and Firebase, supporting dynamic feeds, interactive comments, user profiles, and media uploads.</p>
-              
+              <p>A modular social network built with Flutter and Firebase, supporting dynamic feeds, interactive
+                comments, user profiles, and media uploads.</p>
+
               <details class="project-specs">
                 <summary>Technical Breakdown</summary>
                 <ul>
@@ -313,9 +357,11 @@
                 </ul>
               </details>
 
-              <div class="tags"><span>Flutter</span><span>Firebase</span><span>BLoC</span><span>Social Graph</span></div>
+              <div class="tags"><span>Flutter</span><span>Firebase</span><span>BLoC</span><span>Social Graph</span>
+              </div>
               <div class="project-links">
-                <a class="project-link" href="https://github.com/OmarShawkey13/ripple" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+                <a class="project-link" href="https://github.com/OmarShawkey13/ripple" target="_blank"
+                  rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
@@ -323,7 +369,8 @@
           <!-- 08: PULSE -->
           <article class="project-card reveal">
             <div class="project-media media-pulse">
-              <img src="assets/images/pulse.webp" alt="Pulse music player preview" width="1536" height="1024" loading="lazy" decoding="async">
+              <img src="assets/images/pulse.webp" alt="Pulse music player preview" width="1536" height="1024"
+                loading="lazy" decoding="async">
             </div>
             <div class="project-content">
               <div class="project-topline">
@@ -331,8 +378,9 @@
                 <span class="project-type">Offline Audio Engine</span>
               </div>
               <h3>Pulse</h3>
-              <p>An offline-first audio player crafted around uninterrupted playback, custom queue management, lock-screen media controls, and metadata extraction.</p>
-              
+              <p>An offline-first audio player crafted around uninterrupted playback, custom queue management,
+                lock-screen media controls, and metadata extraction.</p>
+
               <details class="project-specs">
                 <summary>Technical Breakdown</summary>
                 <ul>
@@ -343,7 +391,8 @@
 
               <div class="tags"><span>Flutter</span><span>Background Audio</span><span>Local Storage</span></div>
               <div class="project-links">
-                <a class="project-link" href="https://github.com/OmarShawkey13/pulse" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+                <a class="project-link" href="https://github.com/OmarShawkey13/pulse" target="_blank"
+                  rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
@@ -351,7 +400,8 @@
           <!-- 09: VIBE -->
           <article class="project-card reveal">
             <div class="project-media media-vibe">
-              <img src="assets/images/vibe.webp" alt="Vibe short-form video app preview" width="1262" height="1600" loading="lazy" decoding="async">
+              <img src="assets/images/vibe.webp" alt="Vibe short-form video app preview" width="1262" height="1600"
+                loading="lazy" decoding="async">
             </div>
             <div class="project-content">
               <div class="project-topline">
@@ -359,8 +409,9 @@
                 <span class="project-type">Video Streaming</span>
               </div>
               <h3>Vibe</h3>
-              <p>A short-form vertical video streaming app featuring preloaded video controllers, gesture interactions, and real-time social engagement.</p>
-              
+              <p>A short-form vertical video streaming app featuring preloaded video controllers, gesture interactions,
+                and real-time social engagement.</p>
+
               <details class="project-specs">
                 <summary>Technical Breakdown</summary>
                 <ul>
@@ -369,9 +420,11 @@
                 </ul>
               </details>
 
-              <div class="tags"><span>Flutter</span><span>Video Streaming</span><span>Firebase</span><span>Memory Opt</span></div>
+              <div class="tags"><span>Flutter</span><span>Video Streaming</span><span>Firebase</span><span>Memory
+                  Opt</span></div>
               <div class="project-links">
-                <a class="project-link" href="https://github.com/OmarShawkey13/vibe" target="_blank" rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
+                <a class="project-link" href="https://github.com/OmarShawkey13/vibe" target="_blank"
+                  rel="noopener noreferrer">View on GitHub <span aria-hidden="true">↗</span></a>
               </div>
             </div>
           </article>
@@ -387,13 +440,20 @@
           <h2 id="about-title">Curious by nature.<br><span class="muted-heading">Practical by design.</span></h2>
         </div>
         <div class="about-copy reveal">
-          <p>I’m a mobile software engineer based in Cairo. Since September 2024, I’ve been shipping end-to-end mobile applications—from system architecture and pixel-accurate UI to REST/Firebase integrations, local databases, and Google Play releases.</p>
-          <p>I care deeply about how an app feels under the thumb and how maintainable it is under the hood. Whether building cross-platform flows in Flutter with Clean Architecture and BLoC/Cubit, or dropping down to native Kotlin for system-level Android services, my goal is always clarity, speed, and reliability.</p>
+          <p>I’m a mobile software engineer based in Cairo. Since September 2024, I’ve been shipping end-to-end mobile
+            applications—from system architecture and pixel-accurate UI to REST/Firebase integrations, local databases,
+            and Google Play releases.</p>
+          <p>I care deeply about how an app feels under the thumb and how maintainable it is under the hood. Whether
+            building cross-platform flows in Flutter with Clean Architecture and BLoC/Cubit, or dropping down to native
+            Kotlin for system-level Android services, my goal is always clarity, speed, and reliability.</p>
           <div class="about-details">
-            <div><span>Role</span><strong>Flutter &amp; Android Engineer · Freelance / Remote</strong></div>
-            <div><span>Education</span><strong>B.Sc. in Business Information Systems · Al-Alsun Higher Institute</strong></div>
+            <div><span>Role</span><strong>Flutter &amp; Android Engineer · Freelance / Remote (Since Sep 2024)</strong>
+            </div>
+            <div><span>Education</span><strong>B.Sc. in Business Information Systems · Al-Alsun Higher Institute
+                (Expected 2027)</strong></div>
             <div><span>Focus</span><strong>Clean Architecture, Real-Time Apps &amp; Native Android Tools</strong></div>
-            <div><span>Languages</span><strong>Arabic (Native) · English (Professional Working)</strong></div>
+            <div><span>Languages</span><strong>Arabic (Native) · English (Professional Working Proficiency)</strong>
+            </div>
           </div>
         </div>
       </div>
@@ -415,7 +475,9 @@
             <h3>Cross-Platform &amp; Native</h3>
             <p>Crafting responsive, accessible interfaces and system-level Android experiences.</p>
             <div class="skill-pills">
-              <span>Flutter</span><span>Dart</span><span>Android Native</span><span>Kotlin</span><span>Android IME</span><span>Material 3</span><span>Custom Animations</span><span>Localization &amp; RTL</span>
+              <span>Flutter</span><span>Dart</span><span>Android Native</span><span>Kotlin</span><span>Java</span><span>Android
+                IME</span><span>Material 3</span><span>Custom Animations</span><span>Localization &amp;
+                RTL</span><span>Figma</span>
             </div>
           </div>
           <div class="skill-group reveal">
@@ -423,7 +485,8 @@
             <h3>Scalable Codebases</h3>
             <p>Structuring apps so features scale cleanly, state is predictable, and logic is testable.</p>
             <div class="skill-pills">
-              <span>Clean Architecture</span><span>BLoC</span><span>Cubit</span><span>MVVM</span><span>Feature-First Modularization</span><span>SOLID Principles</span><span>Dependency Injection</span>
+              <span>Clean Architecture</span><span>BLoC</span><span>Cubit</span><span>MVVM</span><span>Feature-First
+                Modularization</span><span>SOLID Principles</span><span>Dependency Injection</span>
             </div>
           </div>
           <div class="skill-group reveal">
@@ -431,7 +494,10 @@
             <h3>Networking &amp; Release</h3>
             <p>Connecting apps to real-time backends, offline storage, and production stores.</p>
             <div class="skill-pills">
-              <span>RESTful APIs</span><span>Dio</span><span>Firebase Auth</span><span>Cloud Firestore</span><span>FCM Push</span><span>SQLite</span><span>Offline Caching</span><span>Git &amp; GitHub</span><span>Google Play Console</span>
+              <span>RESTful APIs</span><span>Dio</span><span>Firebase Auth</span><span>Cloud Firestore</span><span>FCM
+                Push</span><span>Cloudinary</span><span>SQLite</span><span>SharedPreferences</span><span>Offline
+                Caching</span><span>Pagination</span><span>Postman</span><span>Git &amp; GitHub</span><span>Google Play
+                Console</span>
             </div>
           </div>
         </div>
@@ -450,7 +516,8 @@
               <span>Send an Email</span>
               <span aria-hidden="true">↗</span>
             </a>
-            <button class="button button-outline-light" type="button" id="copy-email-btn" data-email="omar.mohamed.flutter@gmail.com">
+            <button class="button button-outline-light" type="button" id="copy-email-btn"
+              data-email="omar.mohamed.flutter@gmail.com">
               <span id="copy-email-text">Copy Email Address</span>
             </button>
           </div>
@@ -485,4 +552,5 @@
     </div>
   </footer>
 </body>
+
 </html>
