@@ -574,6 +574,8 @@ h1 em, .contact-section h2 em {
 
 .media-piko { background: #d8eae4; }
 .media-keyboard { background: #d8e6ed; }
+.media-noryn { background: #111827; }
+.media-noryn img { object-fit: contain; }
 .media-chess { background: #e5daca; }
 .media-wallix { background: #d7d8e5; }
 .media-ripple { background: #f0dfe4; }
