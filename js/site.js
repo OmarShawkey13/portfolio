@@ -3,16 +3,19 @@ const navigation = document.querySelector('.site-nav');
 const siteHeader = document.getElementById('site-header');
 const scrollProgress = document.getElementById('scroll-progress');
 
-// 1. Mobile Navigation Menu
+// Mobile navigation
 if (menuButton && navigation) {
-  const closeMenu = () => {
+  const closeMenu = (returnFocus = false) => {
     navigation.classList.remove('is-open');
     menuButton.setAttribute('aria-expanded', 'false');
     menuButton.setAttribute('aria-label', 'Open navigation');
+
+    if (returnFocus) menuButton.focus();
   };
 
   menuButton.addEventListener('click', () => {
-    const open = navigation.classList.toggle('is-open');
+    const open = menuButton.getAttribute('aria-expanded') !== 'true';
+    navigation.classList.toggle('is-open', open);
     menuButton.setAttribute('aria-expanded', String(open));
     menuButton.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
   });
@@ -21,23 +24,27 @@ if (menuButton && navigation) {
     if (event.target.closest('a')) closeMenu();
   });
 
+  document.addEventListener('click', event => {
+    const open = menuButton.getAttribute('aria-expanded') === 'true';
+    if (open && !navigation.contains(event.target) && !menuButton.contains(event.target)) closeMenu();
+  });
+
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') closeMenu();
+    const open = menuButton.getAttribute('aria-expanded') === 'true';
+    if (event.key === 'Escape' && open) closeMenu(true);
   });
 
   window.addEventListener('resize', () => {
-    if (window.innerWidth > 760) closeMenu();
+    if (window.innerWidth > 850) closeMenu();
   });
 }
 
-// 2. Scroll Progress & Header Elevation
+// Keep scroll work to one update per animation frame.
 const handleScroll = () => {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
 
-  if (siteHeader) {
-    siteHeader.classList.toggle('is-scrolled', scrollTop > 16);
-  }
+  if (siteHeader) siteHeader.classList.toggle('is-scrolled', scrollTop > 16);
 
   if (scrollProgress && docHeight > 0) {
     const progress = Math.min(scrollTop / docHeight, 1);
@@ -45,13 +52,25 @@ const handleScroll = () => {
   }
 };
 
-window.addEventListener('scroll', handleScroll, { passive: true });
+let scrollFrame = 0;
+const scheduleScrollUpdate = () => {
+  if (scrollFrame) return;
+
+  scrollFrame = window.requestAnimationFrame(() => {
+    scrollFrame = 0;
+    handleScroll();
+  });
+};
+
+window.addEventListener('scroll', scheduleScrollUpdate, { passive: true });
+window.addEventListener('resize', scheduleScrollUpdate, { passive: true });
 handleScroll();
 
-// 3. Smooth Scroll Reveal via IntersectionObserver
+// Reveal content only when JavaScript is available; reduced motion shows it immediately.
 const revealElements = document.querySelectorAll('.reveal');
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-if ('IntersectionObserver' in window && revealElements.length > 0) {
+if (!reducedMotion.matches && 'IntersectionObserver' in window && revealElements.length > 0) {
   const revealObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach(entry => {
@@ -64,57 +83,96 @@ if ('IntersectionObserver' in window && revealElements.length > 0) {
     { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
   );
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  revealElements.forEach(element => revealObserver.observe(element));
 } else {
-  revealElements.forEach(el => el.classList.add('is-visible'));
+  revealElements.forEach(element => element.classList.add('is-visible'));
 }
 
-// 4. Active Section Highlight in Navigation
-const sections = document.querySelectorAll('main section[id]');
+// Highlight the visible section in the main navigation.
 const navLinks = document.querySelectorAll('.site-nav a[data-nav]');
+const observedSections = Array.from(document.querySelectorAll('main section[id]'))
+  .filter(section => Array.from(navLinks).some(link => link.dataset.nav === section.id));
 
-if ('IntersectionObserver' in window && sections.length > 0 && navLinks.length > 0) {
+if ('IntersectionObserver' in window && observedSections.length > 0 && navLinks.length > 0) {
   const sectionObserver = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const activeId = entry.target.getAttribute('id');
-          navLinks.forEach(link => {
-            link.classList.toggle('is-active', link.dataset.nav === activeId);
-          });
-        }
+        if (!entry.isIntersecting) return;
+
+        navLinks.forEach(link => {
+          const active = link.dataset.nav === entry.target.id;
+          link.classList.toggle('is-active', active);
+          if (active) link.setAttribute('aria-current', 'location');
+          else link.removeAttribute('aria-current');
+        });
       });
     },
     { rootMargin: '-35% 0px -55% 0px' }
   );
 
-  sections.forEach(section => sectionObserver.observe(section));
+  observedSections.forEach(section => sectionObserver.observe(section));
 }
 
-// 5. One-Click Copy Email Button
-const copyEmailBtn = document.getElementById('copy-email-btn');
+// Copy the public contact email, with a fallback for browsers without Clipboard API access.
+const copyEmailButton = document.getElementById('copy-email-btn');
 const copyEmailText = document.getElementById('copy-email-text');
+let copyMessageTimeout;
 
-if (copyEmailBtn && copyEmailText) {
-  copyEmailBtn.addEventListener('click', async () => {
-    const email = copyEmailBtn.dataset.email;
+const fallbackCopy = email => {
+  const previousFocus = document.activeElement;
+  const field = document.createElement('textarea');
+  field.value = email;
+  field.setAttribute('readonly', '');
+  field.setAttribute('aria-hidden', 'true');
+  field.style.position = 'fixed';
+  field.style.top = '0';
+  field.style.left = '-9999px';
+  document.body.append(field);
+  field.select();
+
+  let copied = false;
+  try {
+    copied = document.execCommand('copy');
+  } catch {
+    copied = false;
+  }
+
+  field.remove();
+  if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
+  return copied;
+};
+
+if (copyEmailButton && copyEmailText) {
+  copyEmailButton.addEventListener('click', async () => {
+    const email = copyEmailButton.dataset.email;
     if (!email) return;
 
-    try {
-      await navigator.clipboard.writeText(email);
-      const originalText = copyEmailText.textContent;
-      copyEmailText.textContent = 'Copied to Clipboard ✓';
-      setTimeout(() => {
-        copyEmailText.textContent = originalText;
-      }, 2200);
-    } catch {
-      window.location.href = `mailto:${email}`;
+    let copied = false;
+    if (navigator.clipboard?.writeText) {
+      try {
+        await navigator.clipboard.writeText(email);
+        copied = true;
+      } catch {
+        copied = false;
+      }
     }
+
+    if (!copied) copied = fallbackCopy(email);
+
+    copyEmailText.textContent = copied
+      ? 'Copied to clipboard ✓'
+      : 'Copy unavailable — use Send an Email';
+
+    window.clearTimeout(copyMessageTimeout);
+    copyMessageTimeout = window.setTimeout(() => {
+      copyEmailText.textContent = 'Copy Email Address';
+    }, 2600);
   });
 }
 
-// 6. Dynamic Copyright Year
-const yearEl = document.getElementById('year');
-if (yearEl) {
-  yearEl.textContent = new Date().getFullYear();
-}
+// Keep the footer year current without requiring a build step.
+const yearElement = document.getElementById('year');
+if (yearElement) yearElement.textContent = new Date().getFullYear();
+
+// Activating this class enables JS-only navigation and reveal enhancements.
+document.documentElement.classList.add('js');
